@@ -18,6 +18,8 @@ public class Room implements Comparable<Room> {
     private int distanceFromStart = 0;
     //to be used during traversal: if this room has been visited
     private boolean visited = false;
+    //to be used during traversal: the previous node to this one
+    private Room parent = null;
 
     public Room(String id) {
         this.id = id;
@@ -61,6 +63,14 @@ public class Room implements Comparable<Room> {
      */
     public void setUnvisited() {
         visited = false;
+    }
+
+    public Room parent() {
+        return parent;
+    }
+
+    public void setParent(Room parent) {
+        this.parent = parent;
     }
 
     /**

@@ -1,7 +1,6 @@
 package Classes;
 
 import java.util.*;
-import java.util.List.*;
 
 /**
  * A building, ie a set of n rooms which are connected by n-1 corridors.
@@ -68,74 +67,78 @@ public class Building {
      * @param start the room to start at
      * @return a list of paths between rooms, in order of traversal for the shortest possible distance
      */
-    public List<Path> shortestPath(Room start) {
+    public List<Room> shortestPath(Room start) {
         //error checking
         Objects.requireNonNull(start);
         if(!rooms().contains(start)) {
             throw new IllegalArgumentException("Start room must be in the building");
         }
 
-        //the path
-        List<Path> path = new ArrayList<>();
-        //create a queue of the leaves in this building - ie rooms connected to only one corridor - sorted by their distance from the start node
-        Queue<Room> leaves = new PriorityQueue<Room>(Room::compareTo);
+        traversalHousekeeping();
 
-        //update the distance of every room from the closest leaf
+        //update the distance of every room from the start, to figure out the direction to traverse
         updateDistances(start);
-        //add every leaf to the queue, sorted by distance from start
-        leaves.addAll(leaves());
+        //the leaves in this building - i.e. rooms connected to only one corridor - sorted by their distance from the start
+        Queue<Room> unvisitedLeaves = new PriorityQueue<>(leaves());
 
-        path = path(start, leaves, path);
+        //the path through the building
+        List<Room> path = path(start, unvisitedLeaves);
 
-        postTraversalHousekeeping();
+        traversalHousekeeping();
 
         return path;
     }
 
-    private List<Path> path(Room start, Queue<Room> leaves, List<Path> path) {
-
-        //if every leaf has been visited, return the path
-        if(leaves.isEmpty()) {
-            return path;
-        }
-
-        //update the distances between the starting room and the next room to visit
-        updateDistances(start, leaves.peek());
+    /**
+     * Helper for shortestPath algorithm.
+     * @param start room to start traversal at
+     * @param leaves the leaf nodes in the building
+     * @return a path from the start room to every other room in the building, based on the order of the leaves queue.
+     */
+    private List<Room> path(Room start, Queue<Room> leaves) {
+        List<Room> path = new ArrayList<>();
 
         /*
-         * create the path:
+         * for each leaf in the building:
          * traverse from the start node to the closest leaf node
-         * begin traversal at that leaf node
-         * repeat until all leaf nodes have been visited
+         * add this traversal to the total path
+         * repeat this with the leaf node as the new start node
          */
-        Room destination = leaves.poll(); //the current destination of the path
-        path.add(new Path(start, destination, destination.distanceFromStart()));
-        return path(destination, leaves, path);
+        Room current = start;
+        while(!leaves.isEmpty()) {
+            Room leaf = leaves.poll();
+            path.addAll(traversal(current, leaf));
+            //todo - code repetition
+            if(!leaves.isEmpty()) { //unless this is the last element, remove the leaf, so that the leaf doesn't repeat in final path
+                path.remove(path.size() - 1);
+            }
+            current = leaf;
+        }
+
+        return path;
     }
 
 
     /**
-     * Housekeeping after a traversal of the entire building.
-     * Ensures every room has been visited.
-     * Then, sets every room's visited flag to false, and every room's distanceFromStart to 0.
-     * @throws RuntimeException if not every room has been visited
+     * Housekeeping before or after a traversal of the entire building.
+     * Sets every visited flag to false
      */
-    private void postTraversalHousekeeping() {
+    private void traversalHousekeeping() {
         //housekeeping and error checking
         for(Room room : rooms()) {
             //reset all visited flags to false, and all room distances to 0
             room.setUnvisited();
-            room.setDistanceFromStart(0);
         }
     }
 
     /**
-     * Returns a todo update queue of the leaf nodes in the building
+     * Returns a queue of the leaf nodes in the building.
      * A leaf node is defined as a room with only one corridor connection, i.e. a dead end in traversal.
+     * The queue is sorted by the distanceFromStart for each room.
      * @return a list of the leaf nodes in the building
      */
-    private Queue<Room> leaves() {
-        Queue<Room> leaves = new PriorityQueue<>();
+    private List<Room> leaves() {
+        List<Room> leaves = new ArrayList<>();
 
         //create list of leaves
         for(Room r : rooms()) {
@@ -143,6 +146,8 @@ public class Building {
                 leaves.add(r);
             }
         }
+
+        leaves.sort(Room::compareTo);
 
         return leaves;
     }
@@ -153,24 +158,26 @@ public class Building {
      * @param destination room to end traversal at
      * @return list of paths, representing the shortest path from start -> destination
      */
-    public List<Path> traversal(Room start, Room destination) {
-        //add every path over depth first traversal from start to destination
-        List<Path> path = traversalUtil(start, destination, new ArrayList<>());
-        //remove any unnecessary paths
-        removeUnvisitedEdges(path);
-        //reset traversal attributes
-        postTraversalHousekeeping();
+    public List<Room> traversal(Room start, Room destination) {
+        traversalHousekeeping();
+        //set the parent for every room on the traversal from start -> destination
+        traversalUtil(start, destination);
+        //build the path based on the parents
+        List<Room> path = buildPath(start, destination);
+        traversalHousekeeping();
 
         return path;
     }
 
-    private List<Path> traversalUtil(Room start, Room destination, List<Path> path) {
+    //use depth first traversal to find the path from the start node to the destination node
+    private void traversalUtil(Room start, Room destination) {
         start.setVisited();
 
         if (start.equals(destination)) {
-            return path;
+            return;
         }
 
+        //todo - reduce code rep with other DFT?
         //add every path during traversal, until destination is found
         for(Corridor c : start.adjList()) {
             Room next = c.otherEnd(start);
@@ -178,41 +185,50 @@ public class Building {
             if(next.isLeaf() && !next.equals(destination)) { //dead end in traversal
                 continue;
             }
-            if (next.unvisited()) {
-                path.add(new Path(start, next, c.distance()));
-                return traversalUtil(next, destination, path); //move to next room in traversal
+            if(next.unvisited()) {
+                next.setParent(start);
+                //path.add(new Path(start, next, c.distance()));
+                traversalUtil(next, destination); //move to next room in traversal
             }
         }
-
-        return path;
-        //throw new RuntimeException("Traversal failed: destination never reached");
     }
 
-    private void removeUnvisitedEdges(List<Path> path) {
-        //todo
-        path.removeIf(p -> p.source().unvisited() || p.destination().unvisited());
+    private List<Room> buildPath(Room start, Room destination) {
+        /*
+         * start at the destination node.
+         * traverse backwards, to the parent
+         * repeat with the parent
+         * repeat until reaching the start node
+         * finally, reverse this list
+         */
+
+        List<Room> path = new ArrayList<>();
+        path.add(destination);
+
+        Room current = destination;
+        while(!current.equals(start)) {
+            current = current.parent();
+            path.add(current);
+        }
+
+        Collections.reverse(path);
+
+        return path;
     }
 
     /**
-     * Sets the distanceFromStart for each of the rooms in the building, to be its distance from the given starting room.
+     * Updates the distance of every room in the building to be its distance from the given start room.
+     * @param start the room to calculate the distances to
      */
-    private void updateDistances(Room start, Room end) {
-        start.setDistanceFromStart(0);
-        updateDistancesUtil(start, end);
-    }
-
     private void updateDistances(Room start) {
+        traversalHousekeeping();
         start.setDistanceFromStart(0);
-        updateDistancesUtil(start, null);
+        updateDistancesUtil(start);
+        traversalHousekeeping();
     }
 
-    private void updateDistancesUtil(Room start, Room end) {
-        //todo
+    private void updateDistancesUtil(Room start) {
         start.setVisited();
-
-        if(start.equals(end)) {
-            return;
-        }
 
         //use depth first traversal
         for(Corridor c : start.adjList()) {
@@ -220,45 +236,8 @@ public class Building {
             if(nextRoom.unvisited()) {
                 //update the distance of this room
                 nextRoom.setDistanceFromStart(start.distanceFromStart() + c.distance());
-                updateDistancesUtil(nextRoom, end);
+                updateDistancesUtil(nextRoom);
             }
-        }
-    }
-
-    /**
-     * A directed path between rooms in the building.
-     */
-    public record Path(Room source, Room destination, int distance) {
-
-        public Path(Room source, Room destination) {
-            this(source, destination, 0);
-        }
-
-        /**
-         * Whether this path is connected to the given path - i.e. if the destination of this path is the same as the source of the given path
-         * @param path the path to check connection to
-         * @return true if the paths are connected
-         */
-        public boolean connected(Path path) {
-            return destination().equals(path.source());
-        }
-
-        @Override
-        public String toString() {
-            return source.toString() + " -> " + destination.toString() + ", distance: " + distance + '\n';
-        }
-
-        /**
-         * Paths are equal if their sources and destinations are equal
-         * @param o   the reference object with which to compare.
-         * @return if the paths are equal
-         */
-        @Override
-        public boolean equals(Object o) {
-            if(!(o instanceof Path p)) {
-                return false;
-            }
-            return source().equals(p.source()) && destination().equals(p.destination());
         }
     }
 
