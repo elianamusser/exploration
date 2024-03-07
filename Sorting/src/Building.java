@@ -30,22 +30,18 @@ public class Building {
      */
     public void addRoom(Room toAdd, Room connection, int distance) throws IllegalArgumentException {
         //error checking
-        Objects.requireNonNull(toAdd);
-        Objects.requireNonNull(connection);
-        if(distance < 0) {
-            throw new IllegalArgumentException("The distance must be positive");
-        }
+        //other error checking occurs in Room.addCorridor method
         if(!rooms().contains(connection)) {
             throw new IllegalArgumentException("The connection room must be in the graph");
         }
 
         rooms().add(toAdd);
 
-        //ensure this building still has n rooms and n-1 corridors
-        if(numberOfCorridors() != numberOfRooms() - 1) {
-            rooms().remove(toAdd);
-            throw new IllegalArgumentException("Building must maintain n rooms and n-1 corridors");
-        }
+//        //ensure this building still has n rooms and n-1 corridors
+//        if(numberOfCorridors() != numberOfRooms() - 1) {
+//            rooms().remove(toAdd);
+//            throw new IllegalArgumentException("Building must maintain n rooms and n-1 corridors");
+//        }
 
         Room.addCorridor(toAdd, connection, distance);
     }
@@ -76,7 +72,11 @@ public class Building {
      * @return a list of paths between rooms, in order of traversal for the shortest possible distance
      */
     public List<Path> shortestPath(Room start) {
+        //error checking
         Objects.requireNonNull(start);
+        if(!rooms().contains(start)) {
+            throw new IllegalArgumentException("Start room must be in the building");
+        }
 
         List<Path> path = new ArrayList<>();
 
@@ -161,6 +161,12 @@ public class Building {
     /**
      * A directed path between rooms in the building.
      */
-    public record Path(Room source, Room destination, int distance) { }
+    public record Path(Room source, Room destination, int distance) {
+
+        @Override
+        public String toString() {
+            return source + " -> " + destination + ", distance: " + distance + '\n';
+        }
+    }
 
 }

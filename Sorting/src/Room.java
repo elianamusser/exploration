@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A room in a building.
@@ -86,17 +87,26 @@ public class Room {
      * @param distance the distance of the corridor
      */
     public void addConnection(Room room, int distance) {
-        adjList().add(new Corridor(this, room, distance)); //add corridor to the adjacency list
+        Corridor c = new Corridor(this, room, distance);
+        //if the corridor is already in the list, do nothing
+        if(adjList().contains(c))
+            adjList().add(c); //add corridor to the adjacency list
     }
 
     /**
      * Adds a corridor between rooms.
-     *
-     * @param room1    the first end of the corridor
-     * @param room2    the second end of the corridor
+     * @param room1 the first end of the corridor
+     * @param room2 the second end of the corridor
      * @param distance the distance of the corridor
+     * @throws IllegalArgumentException if distance < 0
      */
     public static void addCorridor(Room room1, Room room2, int distance) {
+        Objects.requireNonNull(room1);
+        Objects.requireNonNull(room2);
+        if(distance < 0) {
+            throw new IllegalArgumentException("Distance must be greater than 0");
+        }
+
         room1.addConnection(room2, distance);
         room2.addConnection(room1, distance);
     }
