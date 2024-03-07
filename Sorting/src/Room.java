@@ -1,7 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
 
-class Room {
+/**
+ * A room in a building.
+ */
+public class Room {
+
     //the ID of this room
     private String id;
     //the adjacency list of this room (as a node in the graph)
@@ -9,8 +13,6 @@ class Room {
 
     //to be used during traversal: the distance between this room and the start room in traversal
     public int distanceFromStart = 0;
-    //to be used during traversal: the previous node in traversal
-    private Room parent;
     //to be used during traversal: if this room has been visited
     private boolean visited = false;
 
@@ -27,32 +29,21 @@ class Room {
         return id;
     }
 
-    public Room parent() {
-        return parent;
-    }
-
-    public void setParent(Room parent) {
-        this.parent = parent;
-    }
-
     public int distanceFromStart() {
         return distanceFromStart;
     }
 
-    public void addToDistanceFromStart(int toAdd) {
-        distanceFromStart += toAdd;
-    }
-
-    public void resetDistanceFromStart() {
-        distanceFromStart = 0;
+    public void setDistanceFromStart(int distance) {
+        distanceFromStart = distance;
     }
 
     /**
-     * In traversal, whether this room has been visited.
-     * @return whether this room has been visited in traversal
+     * In traversal, whether this room has not yet been visited.
+     *
+     * @return true if this room has not yet been visited in traversal
      */
-    public boolean visited() {
-        return visited;
+    public boolean unvisited() {
+        return !visited;
     }
 
     /**
@@ -65,66 +56,71 @@ class Room {
     /**
      * Set this room to be unvisited
      */
-    public void setUnvisited() { visited = false; }
+    public void setUnvisited() {
+        visited = false;
+    }
 
     /**
      * Whether this room is a "leaf node."
      * A leaf node is defined as a room which is connected to only one corridor.
+     *
      * @return true if this room is a leaf node.
      */
     public boolean isLeaf() {
-        return corridors().size() == 1;
+        return adjList().size() == 1;
     }
 
     /**
      * The corridors that this room is connected to.
+     *
      * @return a list of the corridors that this room is connected to
      */
-    public List<Corridor> corridors() {
+    public List<Corridor> adjList() {
         return adjList;
     }
 
     /**
      * Adds a corridor between this room and the given room.
-     * @param room the room to connect this room to
+     *
+     * @param room     the room to connect this room to
      * @param distance the distance of the corridor
-     * @return the added corridor
      */
-    public Corridor addConnection(Room room, int distance) {
-        Corridor c = new Corridor(this, room, distance);
-        corridors().add(c);
-        return c;
+    public void addConnection(Room room, int distance) {
+        adjList().add(new Corridor(this, room, distance)); //add corridor to the adjacency list
     }
 
     /**
      * Adds a corridor between rooms.
-     * @param room1 the first end of the corridor
-     * @param room2 the second end of the corridor
+     *
+     * @param room1    the first end of the corridor
+     * @param room2    the second end of the corridor
      * @param distance the distance of the corridor
-     * @return the added corridor
      */
-    public static Corridor addCorridor(Room room1, Room room2, int distance) {
+    public static void addCorridor(Room room1, Room room2, int distance) {
         room1.addConnection(room2, distance);
-        return room2.addConnection(room1, distance);
+        room2.addConnection(room1, distance);
     }
 
     /**
      * The number of corridors that this room is connected to.
+     *
      * @return the number of corridors that this room is connected to
      */
     public int numberOfConnections() {
-        return corridors().size();
+        return adjList().size();
     }
 
     /**
      * Tests for equality.
+     *
      * @param o room to compare this room to
      * @return true if: the given object is a room, the ids of the rooms are the same, and
      * the adjacency lists of the rooms are the same
      */
     @Override
     public boolean equals(Object o) {
-        return (o instanceof Room) && this.id().equals(((Room)o).id()) && this.adjList.equals(((Room)o).adjList);
+        return (o instanceof Room) && this.id().equals(((Room) o).id()) && this.adjList.equals(((Room) o).adjList);
     }
 
 }
+
