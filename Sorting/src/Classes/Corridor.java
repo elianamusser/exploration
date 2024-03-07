@@ -7,8 +7,8 @@ public record Corridor(Room room1, Room room2, int distance) {
 
     /**
      * Returns whether the corridors are connected to each other - i.e. if they share a room
-     * @param corridor1
-     * @param corridor2
+     * @param corridor1 first corridor to check connection with
+     * @param corridor2 second corridor to check connection with
      * @return true if the corridors are connected
      */
     public static boolean connected(Corridor corridor1, Corridor corridor2) {
@@ -18,8 +18,8 @@ public record Corridor(Room room1, Room room2, int distance) {
 
     /**
      * If this corridor is connected to the given room
-     * @param room
-     * @return
+     * @param room room to check connection with
+     * @return whether the rooms are connected
      */
     public boolean connected(Room room) {
         return room1().equals(room) || room2().equals(room);

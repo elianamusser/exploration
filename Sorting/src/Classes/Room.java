@@ -94,8 +94,6 @@ public class Room implements Comparable<Room> {
 
     /**
      * Whether this room is connected to the given room
-     * @param room
-     * @return
      */
     public boolean connected(Room room) {
         for(Corridor c : adjList()) {
@@ -109,7 +107,6 @@ public class Room implements Comparable<Room> {
 
     /**
      * Adds a corridor between this room and the given room.
-     *
      * @param room     the room to connect this room to
      * @param distance the distance of the corridor
      */
@@ -140,7 +137,6 @@ public class Room implements Comparable<Room> {
 
     /**
      * The number of corridors that this room is connected to.
-     *
      * @return the number of corridors that this room is connected to
      */
     public int numberOfConnections() {
@@ -154,7 +150,6 @@ public class Room implements Comparable<Room> {
 
     /**
      * Tests for equality.
-     *
      * @param o room to compare this room to
      * @return true if: the given object is a room, the ids of the rooms are the same, and
      * the adjacency lists of the rooms are the same

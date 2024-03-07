@@ -40,12 +40,6 @@ public class Building {
 
         rooms().add(toAdd);
 
-        //ensure this building still has n rooms and n-1 corridors
-//        if(numberOfCorridors() != numberOfRooms() - 1) {
-//            rooms().remove(toAdd);
-//            throw new IllegalArgumentException("Classes.Building must maintain n rooms and n-1 corridors");
-//        }
-
         Room.addCorridor(toAdd, connection, distance);
     }
 
@@ -153,62 +147,50 @@ public class Building {
         return leaves;
     }
 
-    public Queue<Path> traversalUtil(Room start, Room destination, Queue<Path> path) {
+    /**
+     * Returns a path representing the shortest path from a starting room to a destination room.
+     * @param start room to start traversal at
+     * @param destination room to end traversal at
+     * @return list of paths, representing the shortest path from start -> destination
+     */
+    public List<Path> traversal(Room start, Room destination) {
+        //add every path over depth first traversal from start to destination
+        List<Path> path = traversalUtil(start, destination, new ArrayList<>());
+        //remove any unnecessary paths
+        removeUnvisitedEdges(path);
+        //reset traversal attributes
+        postTraversalHousekeeping();
+
+        return path;
+    }
+
+    private List<Path> traversalUtil(Room start, Room destination, List<Path> path) {
         start.setVisited();
 
-        
+        if (start.equals(destination)) {
+            return path;
+        }
 
         //add every path during traversal, until destination is found
         for(Corridor c : start.adjList()) {
             Room next = c.otherEnd(start);
-            path.add(new Path(start, next));
 
-            if (next.equals(destination)) {
-                return path;
-            }
-            else if(next.isLeaf()) { //dead end in traversal
+            if(next.isLeaf() && !next.equals(destination)) { //dead end in traversal
                 continue;
             }
-            else if (next.unvisited()) {
-                traversalUtil(next, destination, path); //move to next room in traversal
+            if (next.unvisited()) {
+                path.add(new Path(start, next, c.distance()));
+                return traversalUtil(next, destination, path); //move to next room in traversal
             }
-//            else { //backtrack
-//                traversalUtil(start, destination, path);
-//            }
         }
 
         return path;
-
         //throw new RuntimeException("Traversal failed: destination never reached");
     }
 
-//    private List<Path> traversal(Room destination) {
-//        return traversalUtil(rooms().get(0), destination, new ArrayList<Path>());
-//    }
-
-    public Queue<Path> traversal(Room start, Room destination) {
-        //add every path over depth first traversal from start to destination
-        Queue<Path> path = traversalUtil(start, destination, new ArrayDeque<>());
-
-        //remove any unnecessary paths
-        Queue<Path> pathElements = new ArrayDeque<>(path);
-
-        while(!pathElements.isEmpty()) {
-            Path p1 = pathElements.poll();
-            Path p2 = pathElements.poll();
-            assert p1 != null;
-            assert p2 != null;
-
-            if(p1.source().equals(p2.destination()) ) {
-                path.remove(p2);
-            }
-
-            pathElements.
-        }
-
-        postTraversalHousekeeping();
-
-        return path;
+    private void removeUnvisitedEdges(List<Path> path) {
+        //todo
+        path.removeIf(p -> p.source().unvisited() || p.destination().unvisited());
     }
 
     /**
@@ -225,6 +207,7 @@ public class Building {
     }
 
     private void updateDistancesUtil(Room start, Room end) {
+        //todo
         start.setVisited();
 
         if(start.equals(end)) {
@@ -253,8 +236,8 @@ public class Building {
 
         /**
          * Whether this path is connected to the given path - i.e. if the destination of this path is the same as the source of the given path
-         * @param path
-         * @return
+         * @param path the path to check connection to
+         * @return true if the paths are connected
          */
         public boolean connected(Path path) {
             return destination().equals(path.source());
