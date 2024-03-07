@@ -1,3 +1,5 @@
+package Classes;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -5,7 +7,7 @@ import java.util.Objects;
 /**
  * A room in a building.
  */
-public class Room {
+public class Room implements Comparable<Room> {
 
     //the ID of this room
     private String id;
@@ -13,7 +15,7 @@ public class Room {
     private final List<Corridor> adjList;
 
     //to be used during traversal: the distance between this room and the start room in traversal
-    public int distanceFromStart = 0;
+    private int distanceFromStart = 0;
     //to be used during traversal: if this room has been visited
     private boolean visited = false;
 
@@ -81,6 +83,31 @@ public class Room {
     }
 
     /**
+     * Rooms are compared based on their distanceFromStart.
+     * @param room the object to be compared.
+     * @return -1, 0, or 1 based on comparison
+     */
+    @Override
+    public int compareTo(Room room) {
+        return Integer.compare(distanceFromStart(), room.distanceFromStart());
+    }
+
+    /**
+     * Whether this room is connected to the given room
+     * @param room
+     * @return
+     */
+    public boolean connected(Room room) {
+        for(Corridor c : adjList()) {
+            if(c.connected(room) && !this.equals(room)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Adds a corridor between this room and the given room.
      *
      * @param room     the room to connect this room to
@@ -89,7 +116,7 @@ public class Room {
     public void addConnection(Room room, int distance) {
         Corridor c = new Corridor(this, room, distance);
         //if the corridor is already in the list, do nothing
-        if(adjList().contains(c))
+        if(!adjList().contains(c))
             adjList().add(c); //add corridor to the adjacency list
     }
 
@@ -120,6 +147,11 @@ public class Room {
         return adjList().size();
     }
 
+    @Override
+    public String toString() {
+        return id;
+    }
+
     /**
      * Tests for equality.
      *
@@ -130,6 +162,10 @@ public class Room {
     @Override
     public boolean equals(Object o) {
         return (o instanceof Room) && this.id().equals(((Room) o).id()) && this.adjList.equals(((Room) o).adjList);
+    }
+
+    public static boolean equals(Room room1, Room room2) {
+        return room1.equals(room2);
     }
 
 }
