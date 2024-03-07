@@ -11,6 +11,5 @@ public class App {
         building.addRoom(c, a, 5);
 
         System.out.println(building.shortestPath(a));
-
     }
 }

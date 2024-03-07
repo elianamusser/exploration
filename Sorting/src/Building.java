@@ -37,7 +37,7 @@ public class Building {
 
         rooms().add(toAdd);
 
-//        //ensure this building still has n rooms and n-1 corridors
+        //ensure this building still has n rooms and n-1 corridors
 //        if(numberOfCorridors() != numberOfRooms() - 1) {
 //            rooms().remove(toAdd);
 //            throw new IllegalArgumentException("Building must maintain n rooms and n-1 corridors");
@@ -124,7 +124,7 @@ public class Building {
 
     /**
      * Returns a list of the leaf nodes in the building
-     * A leaf node is defined as a room with only one corridor connection, ie. a dead end in traversal.
+     * A leaf node is defined as a room with only one corridor connection, i.e. a dead end in traversal.
      * @return a list of the leaf nodes in the building
      */
     private List<Room> leaves() {
