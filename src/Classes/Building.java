@@ -164,11 +164,10 @@ public class Building {
         traversalUtil(start, destination);
         //build the path based on the parents
         List<Room> path = buildPath(start, destination);
-        traversalHousekeeping();
-
         return path;
     }
 
+    //todo - simplify?
     //use depth first traversal to find the path from the start node to the destination node
     private void traversalUtil(Room start, Room destination) {
         start.setVisited();
@@ -182,12 +181,11 @@ public class Building {
         for(Corridor c : start.adjList()) {
             Room next = c.otherEnd(start);
 
-            if(next.isLeaf() && !next.equals(destination)) { //dead end in traversal
-                continue;
-            }
+            // if(next.isLeaf() && !next.equals(destination)) { //dead end in traversal
+            //     continue;
+            // }
             if(next.unvisited()) {
                 next.setParent(start);
-                //path.add(new Path(start, next, c.distance()));
                 traversalUtil(next, destination); //move to next room in traversal
             }
         }
@@ -224,7 +222,6 @@ public class Building {
         traversalHousekeeping();
         start.setDistanceFromStart(0);
         updateDistancesUtil(start);
-        traversalHousekeeping();
     }
 
     private void updateDistancesUtil(Room start) {

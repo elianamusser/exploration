@@ -21,21 +21,21 @@ class BuildingTest {
     static Room f = new Room("f");
     static Room g = new Room("g");
 
-    static Corridor c1;
-    static Corridor c2;
-    static Corridor c3;
-    static Corridor c4;
-    static Corridor c5;
-    static Corridor c6;
+    // static Corridor c1;
+    // static Corridor c2;
+    // static Corridor c3;
+    // static Corridor c4;
+    // static Corridor c5;
+    // static Corridor c6;
 
     @BeforeAll
     static void initialize() {
         building = new Building(a);
-        c1 = new Corridor(a, b, 2);
-        c2 = new Corridor(d, b, 4);
-        c3 = new Corridor(e, b, 9);
-        c4 = new Corridor(b, f, 1);
-        c5 = new Corridor(c, a, 5);
+        // c1 = new Corridor(a, b, 2);
+        // c2 = new Corridor(d, b, 4);
+        // c3 = new Corridor(e, b, 9);
+        // c4 = new Corridor(b, f, 1);
+        // c5 = new Corridor(c, a, 5);
 
         building.addRoom(b, a, 2);
         building.addRoom(d, b, 4);
