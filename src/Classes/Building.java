@@ -1,6 +1,9 @@
 package Classes;
 
 import java.util.*;
+import java.util.function.*;
+import java.lang.reflect.*;
+import java.lang.Class;
 
 /**
  * A building, ie a set of n rooms which are connected by n-1 corridors.
@@ -13,6 +16,7 @@ public class Building {
      * @param firstRoom the initial room in the building
      */
     public Building(Room firstRoom) {
+        Objects.requireNonNull(firstRoom);
         rooms = new ArrayList<>();
         rooms.add(firstRoom);
     }
@@ -68,13 +72,24 @@ public class Building {
      * @return a list of paths between rooms, in order of traversal for the shortest possible distance
      */
     public List<Room> shortestPath(Room start) {
+        int maxSize = 100; //the max supported size for this algorithm
+
         //error checking
         Objects.requireNonNull(start);
+        Objects.requireNonNull(rooms());
         if(!rooms().contains(start)) {
             throw new IllegalArgumentException("Start room must be in the building");
         }
+        if(rooms().size() > maxSize) {
+            throw new IllegalArgumentException("Room is above max size");
+        }
 
-        traversalHousekeeping();
+        List<Room> path = new ArrayList<>();
+
+        if(rooms().size() == 1) { //if the building only contains the start room, return only the start room
+            path.add(start);
+            return path;
+        }
 
         //update the distance of every room from the start, to figure out the direction to traverse
         updateDistances(start);
@@ -82,7 +97,7 @@ public class Building {
         Queue<Room> unvisitedLeaves = new PriorityQueue<>(leaves());
 
         //the path through the building
-        List<Room> path = path(start, unvisitedLeaves);
+        path = path(start, unvisitedLeaves);
 
         traversalHousekeeping();
 
@@ -96,6 +111,9 @@ public class Building {
      * @return a path from the start room to every other room in the building, based on the order of the leaves queue.
      */
     private List<Room> path(Room start, Queue<Room> leaves) {
+        Objects.requireNonNull(start);
+        Objects.requireNonNull(leaves);
+
         List<Room> path = new ArrayList<>();
 
         /*
@@ -160,15 +178,14 @@ public class Building {
      */
     public List<Room> traversal(Room start, Room destination) {
         traversalHousekeeping();
-        //set the parent for every room on the traversal from start -> destination
+        // //set the parent for every room on the traversal from start -> destination
         traversalUtil(start, destination);
         //build the path based on the parents
         List<Room> path = buildPath(start, destination);
         return path;
     }
 
-    //todo - simplify?
-    //use depth first traversal to find the path from the start node to the destination node
+    // use depth first traversal to find the path from the start node to the destination node
     private void traversalUtil(Room start, Room destination) {
         start.setVisited();
 
@@ -176,7 +193,6 @@ public class Building {
             return;
         }
 
-        //todo - reduce code rep with other DFT?
         //add every path during traversal, until destination is found
         for(Corridor c : start.adjList()) {
             Room next = c.otherEnd(start);
@@ -189,8 +205,14 @@ public class Building {
                 traversalUtil(next, destination); //move to next room in traversal
             }
         }
-    }
+   }
 
+   /**
+    * Helper for traversal method.
+    * Returns a list of rooms representing the path from the start node to the destination node,
+    * based on their parent fields.
+    * If the parent fields are not correct for the traversal, this method will fail.
+    */
     private List<Room> buildPath(Room start, Room destination) {
         /*
          * start at the destination node.
@@ -199,7 +221,6 @@ public class Building {
          * repeat until reaching the start node
          * finally, reverse this list
          */
-
         List<Room> path = new ArrayList<>();
         path.add(destination);
 
@@ -219,23 +240,25 @@ public class Building {
      * @param start the room to calculate the distances to
      */
     private void updateDistances(Room start) {
+        Objects.requireNonNull(start);
         traversalHousekeeping();
         start.setDistanceFromStart(0);
         updateDistancesUtil(start);
     }
 
-    private void updateDistancesUtil(Room start) {
-        start.setVisited();
+    private void updateDistancesUtil(Room current) {
+        current.setVisited();
 
         //use depth first traversal
-        for(Corridor c : start.adjList()) {
-            Room nextRoom = c.otherEnd(start);
+        for(Corridor c : current.adjList()) {
+            Room nextRoom = c.otherEnd(current);
             if(nextRoom.unvisited()) {
                 //update the distance of this room
-                nextRoom.setDistanceFromStart(start.distanceFromStart() + c.distance());
+                nextRoom.setDistanceFromStart(current.distanceFromStart() + c.distance());
                 updateDistancesUtil(nextRoom);
             }
         }
     }
+
 
 }

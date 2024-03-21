@@ -93,6 +93,13 @@ public class Room implements Comparable<Room> {
     }
 
     /**
+     * removes all items from the adjacency list
+     */
+    public void emptyAdjList() {
+        adjList.clear();
+    }
+
+    /**
      * Rooms are compared based on their distanceFromStart.
      * @param room the object to be compared.
      * @return -1, 0, or 1 based on comparison
