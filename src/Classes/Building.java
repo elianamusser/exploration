@@ -1,9 +1,6 @@
 package Classes;
 
 import java.util.*;
-import java.util.function.*;
-import java.lang.reflect.*;
-import java.lang.Class;
 
 /**
  * A building, ie a set of n rooms which are connected by n-1 corridors.
@@ -72,21 +69,17 @@ public class Building {
      * @return a list of paths between rooms, in order of traversal for the shortest possible distance
      */
     public List<Room> shortestPath(Room start) {
-        int maxSize = 100; //the max supported size for this algorithm
-
         //error checking
-        Objects.requireNonNull(start);
+        Objects.requireNonNull(start); //1
         Objects.requireNonNull(rooms());
-        if(!rooms().contains(start)) {
+        if(!rooms().contains(start)) { //2
             throw new IllegalArgumentException("Start room must be in the building");
-        }
-        if(rooms().size() > maxSize) {
-            throw new IllegalArgumentException("Room is above max size");
         }
 
         List<Room> path = new ArrayList<>();
 
-        if(rooms().size() == 1) { //if the building only contains the start room, return only the start room
+        //if the building only contains the start room, return only the start room
+        if(rooms().size() == 1) { //3
             path.add(start);
             return path;
         }
@@ -97,7 +90,7 @@ public class Building {
         Queue<Room> unvisitedLeaves = new PriorityQueue<>(leaves());
 
         //the path through the building
-        path = path(start, unvisitedLeaves);
+        path = path(start, unvisitedLeaves); //4
 
         traversalHousekeeping();
 
@@ -177,8 +170,11 @@ public class Building {
      * @return list of paths, representing the shortest path from start -> destination
      */
     public List<Room> traversal(Room start, Room destination) {
+        Objects.requireNonNull(start);
+        Objects.requireNonNull(destination);
+
         traversalHousekeeping();
-        // //set the parent for every room on the traversal from start -> destination
+        //set the parent for every room on the traversal from start -> destination
         traversalUtil(start, destination);
         //build the path based on the parents
         List<Room> path = buildPath(start, destination);
@@ -197,9 +193,6 @@ public class Building {
         for(Corridor c : start.adjList()) {
             Room next = c.otherEnd(start);
 
-            // if(next.isLeaf() && !next.equals(destination)) { //dead end in traversal
-            //     continue;
-            // }
             if(next.unvisited()) {
                 next.setParent(start);
                 traversalUtil(next, destination); //move to next room in traversal
@@ -214,6 +207,9 @@ public class Building {
     * If the parent fields are not correct for the traversal, this method will fail.
     */
     private List<Room> buildPath(Room start, Room destination) {
+        Objects.requireNonNull(start);
+        Objects.requireNonNull(destination);
+        
         /*
          * start at the destination node.
          * traverse backwards, to the parent
@@ -252,13 +248,63 @@ public class Building {
         //use depth first traversal
         for(Corridor c : current.adjList()) {
             Room nextRoom = c.otherEnd(current);
-            if(nextRoom.unvisited()) {
+            if(nextRoom.unvisited()) { //1
                 //update the distance of this room
                 nextRoom.setDistanceFromStart(current.distanceFromStart() + c.distance());
                 updateDistancesUtil(nextRoom);
             }
         }
     }
+
+
+        /**
+         * Dummy class to test the private methods in Building.
+         * Public methods are tested in the separate JUnit file named BuildingTest.
+         */
+        private class MockClass {
+            private static void testUpdateDistances() {
+                //initialize
+                Room a = new Room("a");
+                Room b = new Room("b");
+                Room c = new Room("c");
+                Room d = new Room("d");
+                Room e = new Room("e");
+
+                //1: every room in adj list has been visited
+                Building building = new Building(a);
+                building.addRoom(b, a, 2);
+                building.addRoom(c, a, 3);
+                building.addRoom(d, c, 4);
+                building.rooms().forEach( (room) -> {room.setVisited();});
+                building.rooms().forEach( (room) -> {room.setDistanceFromStart(-1);});
+                building.updateDistancesUtil(e);
+                //assert that no distances were updated if rooms were already visited
+                building.rooms().forEach((room) -> { 
+                    if(room.distanceFromStart() != -1) {
+                        throw new RuntimeException("updateDistancesUtil test failed.");
+                    }
+                });
+                System.out.println("Case 1 successful.");
+
+                //1: no rooms in adj list has been visited; nominal case
+                a.emptyAdjList(); //initialize
+                b.emptyAdjList();
+                building = new Building(a);
+                building.addRoom(b, a, 2);
+                building.rooms().forEach( (room) -> {room.setUnvisited();});
+
+                building.updateDistances(a); //test
+                if((a.distanceFromStart() == 0) && (b.distanceFromStart() == 2))
+                    System.out.println("Nominal case successful.");
+                            
+            }
+
+
+            public static void main(String[] args) {
+                testUpdateDistances();
+            }
+
+        }
 
 
 }

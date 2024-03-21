@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Building.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">exploration</a> &gt; <a href="index.source.html" class="el_package">Classes</a> &gt; <span class="el_source">Building.java</span></div><h1>Building.java</h1><pre class="source lang-java linenums">package Classes;
+
+import java.util.*;
+
+/**
+ * A building, ie a set of n rooms which are connected by n-1 corridors.
+ * Ie, a graph, in which the rooms are nodes, and the corridors are undirected weighted edges.
+ */
+public class Building {
+    private final List&lt;Room&gt; rooms;
+
+    /**
+     * @param firstRoom the initial room in the building
+     */
+<span class="fc" id="L15">    public Building(Room firstRoom) {</span>
+<span class="fc" id="L16">        Objects.requireNonNull(firstRoom);</span>
+<span class="fc" id="L17">        rooms = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L18">        rooms.add(firstRoom);</span>
+<span class="fc" id="L19">    }</span>
+
+    public List&lt;Room&gt; rooms() {
+<span class="fc" id="L22">        return rooms;</span>
+    }
+
+    /**
+     * Adds a room to the building.
+     * The room is connected to the given room in the building, along a corridor with the given distance.
+     * @param toAdd the room to add to the building
+     * @param connection the room already in the building, to connect the new room to
+     * @param distance the distance of the corridor to add
+     * @throws IllegalArgumentException if: the distance &lt; 0, the connection room is not in the building, or adding this
+     * room would not keep the ratio of n rooms and n-1 corridors
+     */
+    public void addRoom(Room toAdd, Room connection, int distance) throws IllegalArgumentException {
+        //error checking
+        //other error checking occurs in Classes.Room.addCorridor method
+<span class="pc bpc" id="L37" title="1 of 2 branches missed.">        if(!rooms().contains(connection)) {</span>
+<span class="nc" id="L38">            throw new IllegalArgumentException(&quot;The connection room must be in the graph&quot;);</span>
+        }
+
+<span class="fc" id="L41">        rooms().add(toAdd);</span>
+
+<span class="fc" id="L43">        Room.addCorridor(toAdd, connection, distance);</span>
+<span class="fc" id="L44">    }</span>
+
+    /**
+     * @return the number of rooms in this building
+     */
+    public int numberOfRooms() {
+<span class="nc" id="L50">        return rooms().size();</span>
+    }
+
+    /**
+     * @return the number of corridors in this building
+     */
+    public int numberOfCorridors() {
+<span class="nc" id="L57">        int numberOfCorridors = 0;</span>
+
+<span class="nc bnc" id="L59" title="All 2 branches missed.">        for(Room room : rooms()) {</span>
+<span class="nc" id="L60">            numberOfCorridors += room.numberOfConnections();</span>
+<span class="nc" id="L61">        }</span>
+
+<span class="nc" id="L63">        return numberOfCorridors;</span>
+    }
+
+    /**
+     * Returns the shortest path through this building, visiting every node. Begins at the given starting room.
+     * @param start the room to start at
+     * @return a list of paths between rooms, in order of traversal for the shortest possible distance
+     */
+    public List&lt;Room&gt; shortestPath(Room start) {
+<span class="fc" id="L72">        int maxSize = 100; //the max supported size for this algorithm</span>
+
+        //error checking
+<span class="fc" id="L75">        Objects.requireNonNull(start); //1</span>
+<span class="fc" id="L76">        Objects.requireNonNull(rooms());</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">        if(!rooms().contains(start)) { //2</span>
+<span class="fc" id="L78">            throw new IllegalArgumentException(&quot;Start room must be in the building&quot;);</span>
+        }
+
+<span class="fc" id="L81">        List&lt;Room&gt; path = new ArrayList&lt;&gt;();</span>
+
+        //if the building only contains the start room, return only the start room
+<span class="fc bfc" id="L84" title="All 2 branches covered.">        if(rooms().size() == 1) { //3</span>
+<span class="fc" id="L85">            path.add(start);</span>
+<span class="fc" id="L86">            return path;</span>
+        }
+
+        //update the distance of every room from the start, to figure out the direction to traverse
+<span class="fc" id="L90">        updateDistances(start);</span>
+        //the leaves in this building - i.e. rooms connected to only one corridor - sorted by their distance from the start
+<span class="fc" id="L92">        Queue&lt;Room&gt; unvisitedLeaves = new PriorityQueue&lt;&gt;(leaves());</span>
+
+        //the path through the building
+<span class="fc" id="L95">        path = path(start, unvisitedLeaves); //4</span>
+
+<span class="fc" id="L97">        traversalHousekeeping();</span>
+
+<span class="fc" id="L99">        return path;</span>
+    }
+
+    /**
+     * Helper for shortestPath algorithm.
+     * @param start room to start traversal at
+     * @param leaves the leaf nodes in the building
+     * @return a path from the start room to every other room in the building, based on the order of the leaves queue.
+     */
+    private List&lt;Room&gt; path(Room start, Queue&lt;Room&gt; leaves) {
+<span class="fc" id="L109">        Objects.requireNonNull(start);</span>
+<span class="fc" id="L110">        Objects.requireNonNull(leaves);</span>
+
+<span class="fc" id="L112">        List&lt;Room&gt; path = new ArrayList&lt;&gt;();</span>
+
+        /*
+         * for each leaf in the building:
+         * traverse from the start node to the closest leaf node
+         * add this traversal to the total path
+         * repeat this with the leaf node as the new start node
+         */
+<span class="fc" id="L120">        Room current = start;</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">        while(!leaves.isEmpty()) {</span>
+<span class="fc" id="L122">            Room leaf = leaves.poll();</span>
+<span class="fc" id="L123">            path.addAll(traversal(current, leaf));</span>
+            //todo - code repetition
+<span class="fc bfc" id="L125" title="All 2 branches covered.">            if(!leaves.isEmpty()) { //unless this is the last element, remove the leaf, so that the leaf doesn't repeat in final path</span>
+<span class="fc" id="L126">                path.remove(path.size() - 1);</span>
+            }
+<span class="fc" id="L128">            current = leaf;</span>
+<span class="fc" id="L129">        }</span>
+
+<span class="fc" id="L131">        return path;</span>
+    }
+
+
+    /**
+     * Housekeeping before or after a traversal of the entire building.
+     * Sets every visited flag to false
+     */
+    private void traversalHousekeeping() {
+        //housekeeping and error checking
+<span class="fc bfc" id="L141" title="All 2 branches covered.">        for(Room room : rooms()) {</span>
+            //reset all visited flags to false, and all room distances to 0
+<span class="fc" id="L143">            room.setUnvisited();</span>
+<span class="fc" id="L144">        }</span>
+<span class="fc" id="L145">    }</span>
+
+    /**
+     * Returns a queue of the leaf nodes in the building.
+     * A leaf node is defined as a room with only one corridor connection, i.e. a dead end in traversal.
+     * The queue is sorted by the distanceFromStart for each room.
+     * @return a list of the leaf nodes in the building
+     */
+    private List&lt;Room&gt; leaves() {
+<span class="fc" id="L154">        List&lt;Room&gt; leaves = new ArrayList&lt;&gt;();</span>
+
+        //create list of leaves
+<span class="fc bfc" id="L157" title="All 2 branches covered.">        for(Room r : rooms()) {</span>
+<span class="fc bfc" id="L158" title="All 2 branches covered.">            if(r.isLeaf()) {</span>
+<span class="fc" id="L159">                leaves.add(r);</span>
+            }
+<span class="fc" id="L161">        }</span>
+
+<span class="fc" id="L163">        leaves.sort(Room::compareTo);</span>
+
+<span class="fc" id="L165">        return leaves;</span>
+    }
+
+    /**
+     * Returns a path representing the shortest path from a starting room to a destination room.
+     * @param start room to start traversal at
+     * @param destination room to end traversal at
+     * @return list of paths, representing the shortest path from start -&gt; destination
+     */
+    public List&lt;Room&gt; traversal(Room start, Room destination) {
+<span class="fc" id="L175">        traversalHousekeeping();</span>
+        // //set the parent for every room on the traversal from start -&gt; destination
+<span class="fc" id="L177">        traversalUtil(start, destination);</span>
+        //build the path based on the parents
+<span class="fc" id="L179">        List&lt;Room&gt; path = buildPath(start, destination);</span>
+<span class="fc" id="L180">        return path;</span>
+    }
+
+    // use depth first traversal to find the path from the start node to the destination node
+    private void traversalUtil(Room start, Room destination) {
+<span class="fc" id="L185">        start.setVisited();</span>
+
+<span class="fc bfc" id="L187" title="All 2 branches covered.">        if (start.equals(destination)) {</span>
+<span class="fc" id="L188">            return;</span>
+        }
+
+        //add every path during traversal, until destination is found
+<span class="fc bfc" id="L192" title="All 2 branches covered.">        for(Corridor c : start.adjList()) {</span>
+<span class="fc" id="L193">            Room next = c.otherEnd(start);</span>
+
+<span class="fc bfc" id="L195" title="All 2 branches covered.">            if(next.unvisited()) {</span>
+<span class="fc" id="L196">                next.setParent(start);</span>
+<span class="fc" id="L197">                traversalUtil(next, destination); //move to next room in traversal</span>
+            }
+<span class="fc" id="L199">        }</span>
+<span class="fc" id="L200">   }</span>
+
+   /**
+    * Helper for traversal method.
+    * Returns a list of rooms representing the path from the start node to the destination node,
+    * based on their parent fields.
+    * If the parent fields are not correct for the traversal, this method will fail.
+    */
+    private List&lt;Room&gt; buildPath(Room start, Room destination) {
+        /*
+         * start at the destination node.
+         * traverse backwards, to the parent
+         * repeat with the parent
+         * repeat until reaching the start node
+         * finally, reverse this list
+         */
+<span class="fc" id="L216">        List&lt;Room&gt; path = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L217">        path.add(destination);</span>
+
+<span class="fc" id="L219">        Room current = destination;</span>
+<span class="fc bfc" id="L220" title="All 2 branches covered.">        while(!current.equals(start)) {</span>
+<span class="fc" id="L221">            current = current.parent();</span>
+<span class="fc" id="L222">            path.add(current);</span>
+        }
+
+<span class="fc" id="L225">        Collections.reverse(path);</span>
+
+<span class="fc" id="L227">        return path;</span>
+    }
+
+    /**
+     * Updates the distance of every room in the building to be its distance from the given start room.
+     * @param start the room to calculate the distances to
+     */
+    private void updateDistances(Room start) {
+<span class="fc" id="L235">        Objects.requireNonNull(start);</span>
+<span class="fc" id="L236">        traversalHousekeeping();</span>
+<span class="fc" id="L237">        start.setDistanceFromStart(0);</span>
+<span class="fc" id="L238">        updateDistancesUtil(start);</span>
+<span class="fc" id="L239">    }</span>
+
+    private void updateDistancesUtil(Room current) {
+<span class="fc" id="L242">        current.setVisited();</span>
+
+        //use depth first traversal
+<span class="fc bfc" id="L245" title="All 2 branches covered.">        for(Corridor c : current.adjList()) {</span>
+<span class="fc" id="L246">            Room nextRoom = c.otherEnd(current);</span>
+<span class="fc bfc" id="L247" title="All 2 branches covered.">            if(nextRoom.unvisited()) {</span>
+                //update the distance of this room
+<span class="fc" id="L249">                nextRoom.setDistanceFromStart(current.distanceFromStart() + c.distance());</span>
+<span class="fc" id="L250">                updateDistancesUtil(nextRoom);</span>
+            }
+<span class="fc" id="L252">        }</span>
+<span class="fc" id="L253">    }</span>
+
+
+        /**
+         * Dummy class to test the private methods in Building.
+         * Public methods are tested in the separate JUnit file named BuildingTest.
+         */
+<span class="nc" id="L260">        private class MockClass {</span>
+            private static void testUpdateDistances() {
+                //initialize
+<span class="nc" id="L263">                Room a = new Room(&quot;a&quot;);</span>
+<span class="nc" id="L264">                Room b = new Room(&quot;b&quot;);</span>
+<span class="nc" id="L265">                Room c = new Room(&quot;c&quot;);</span>
+<span class="nc" id="L266">                Room d = new Room(&quot;d&quot;);</span>
+<span class="nc" id="L267">                Room e = new Room(&quot;e&quot;);</span>
+<span class="nc" id="L268">                Room f = new Room(&quot;f&quot;);</span>
+
+                //1: every room in adj list has been visited
+<span class="nc" id="L271">                Building building = new Building(a);</span>
+<span class="nc" id="L272">                building.addRoom(b, a, 2);</span>
+<span class="nc" id="L273">                building.addRoom(c, a, 3);</span>
+<span class="nc" id="L274">                building.addRoom(d, c, 4);</span>
+<span class="nc" id="L275">                building.rooms().forEach( (room) -&gt; {room.setVisited();});</span>
+<span class="nc" id="L276">                building.rooms().forEach( (room) -&gt; {room.setDistanceFromStart(-1);});</span>
+<span class="nc" id="L277">                building.updateDistancesUtil(e);</span>
+                //assert that no distances were updated if rooms were already visited
+<span class="nc" id="L279">                building.rooms().forEach((room) -&gt; { </span>
+<span class="nc bnc" id="L280" title="All 2 branches missed.">                    if(room.distanceFromStart() != -1) {</span>
+<span class="nc" id="L281">                        throw new RuntimeException(&quot;updateDistancesUtil test failed.&quot;);</span>
+                    }
+<span class="nc" id="L283">                });</span>
+<span class="nc" id="L284">                System.out.println(&quot;Case 1 successful.&quot;);</span>
+
+                //case 2: nominal case; not every room in adj list has been visited
+<span class="nc" id="L287">                a.emptyAdjList(); //initialize</span>
+<span class="nc" id="L288">                b.emptyAdjList();</span>
+<span class="nc" id="L289">                building = new Building(a);</span>
+<span class="nc" id="L290">                building.addRoom(b, a, 2);</span>
+<span class="nc" id="L291">                building.rooms().forEach( (room) -&gt; {room.setUnvisited();});</span>
+
+<span class="nc" id="L293">                building.updateDistances(a); //test</span>
+<span class="nc bnc" id="L294" title="All 4 branches missed.">                if((a.distanceFromStart() == 0) &amp;&amp; (b.distanceFromStart() == 2))</span>
+<span class="nc" id="L295">                    System.out.println(&quot;Nominal case successful.&quot;);</span>
+                            
+<span class="nc" id="L297">            }</span>
+
+
+            public static void main(String[] args) {
+<span class="nc" id="L301">                testUpdateDistances();</span>
+<span class="nc" id="L302">            }</span>
+
+        }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Room.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">exploration</a> &gt; <a href="index.source.html" class="el_package">Classes</a> &gt; <span class="el_source">Room.java</span></div><h1>Room.java</h1><pre class="source lang-java linenums">package Classes;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+/**
+ * A room in a building.
+ */
+public class Room implements Comparable&lt;Room&gt; {
+
+    //the ID of this room
+    private String id;
+    //the adjacency list of this room (as a node in the graph)
+    private final List&lt;Corridor&gt; adjList;
+
+    //to be used during traversal: the distance between this room and the start room in traversal
+<span class="fc" id="L18">    private int distanceFromStart = 0;</span>
+    //to be used during traversal: if this room has been visited
+<span class="fc" id="L20">    private boolean visited = false;</span>
+    //to be used during traversal: the previous node to this one
+<span class="fc" id="L22">    private Room parent = null;</span>
+
+<span class="fc" id="L24">    public Room(String id) {</span>
+<span class="fc" id="L25">        this.id = id;</span>
+<span class="fc" id="L26">        adjList = new ArrayList&lt;Corridor&gt;();</span>
+<span class="fc" id="L27">    }</span>
+
+    public void setID(String id) {
+<span class="nc" id="L30">        this.id = id;</span>
+<span class="nc" id="L31">    }</span>
+
+    public String id() {
+<span class="fc" id="L34">        return id;</span>
+    }
+
+    public int distanceFromStart() {
+<span class="fc" id="L38">        return distanceFromStart;</span>
+    }
+
+    public void setDistanceFromStart(int distance) {
+<span class="fc" id="L42">        distanceFromStart = distance;</span>
+<span class="fc" id="L43">    }</span>
+
+    /**
+     * In traversal, whether this room has not yet been visited.
+     *
+     * @return true if this room has not yet been visited in traversal
+     */
+    public boolean unvisited() {
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        return !visited;</span>
+    }
+
+    /**
+     * Set this room to be visited
+     */
+    public void setVisited() {
+<span class="fc" id="L58">        visited = true;</span>
+<span class="fc" id="L59">    }</span>
+
+    /**
+     * Set this room to be unvisited
+     */
+    public void setUnvisited() {
+<span class="fc" id="L65">        visited = false;</span>
+<span class="fc" id="L66">    }</span>
+
+    public Room parent() {
+<span class="fc" id="L69">        return parent;</span>
+    }
+
+    public void setParent(Room parent) {
+<span class="fc" id="L73">        this.parent = parent;</span>
+<span class="fc" id="L74">    }</span>
+
+    /**
+     * Whether this room is a &quot;leaf node.&quot;
+     * A leaf node is defined as a room which is connected to only one corridor.
+     *
+     * @return true if this room is a leaf node.
+     */
+    public boolean isLeaf() {
+<span class="fc bfc" id="L83" title="All 2 branches covered.">        return adjList().size() == 1;</span>
+    }
+
+    /**
+     * The corridors that this room is connected to.
+     *
+     * @return a list of the corridors that this room is connected to
+     */
+    public List&lt;Corridor&gt; adjList() {
+<span class="fc" id="L92">        return adjList;</span>
+    }
+
+    /**
+     * removes all items from the adjacency list
+     */
+    public void emptyAdjList() {
+<span class="fc" id="L99">        adjList.clear();</span>
+<span class="fc" id="L100">    }</span>
+
+    /**
+     * Rooms are compared based on their distanceFromStart.
+     * @param room the object to be compared.
+     * @return -1, 0, or 1 based on comparison
+     */
+    @Override
+    public int compareTo(Room room) {
+<span class="fc" id="L109">        return Integer.compare(distanceFromStart(), room.distanceFromStart());</span>
+    }
+
+    /**
+     * Whether this room is connected to the given room
+     */
+    public boolean connected(Room room) {
+<span class="nc bnc" id="L116" title="All 2 branches missed.">        for(Corridor c : adjList()) {</span>
+<span class="nc bnc" id="L117" title="All 4 branches missed.">            if(c.connected(room) &amp;&amp; !this.equals(room)) {</span>
+<span class="nc" id="L118">                return true;</span>
+            }
+<span class="nc" id="L120">        }</span>
+
+<span class="nc" id="L122">        return false;</span>
+    }
+
+    /**
+     * Adds a corridor between this room and the given room.
+     * @param room     the room to connect this room to
+     * @param distance the distance of the corridor
+     */
+    public void addConnection(Room room, int distance) {
+<span class="fc" id="L131">        Corridor c = new Corridor(this, room, distance);</span>
+        //if the corridor is already in the list, do nothing
+<span class="pc bpc" id="L133" title="1 of 2 branches missed.">        if(!adjList().contains(c))</span>
+<span class="fc" id="L134">            adjList().add(c); //add corridor to the adjacency list</span>
+<span class="fc" id="L135">    }</span>
+
+    /**
+     * Adds a corridor between rooms.
+     * @param room1 the first end of the corridor
+     * @param room2 the second end of the corridor
+     * @param distance the distance of the corridor
+     * @throws IllegalArgumentException if distance &lt; 0
+     */
+    public static void addCorridor(Room room1, Room room2, int distance) {
+<span class="fc" id="L145">        Objects.requireNonNull(room1);</span>
+<span class="fc" id="L146">        Objects.requireNonNull(room2);</span>
+<span class="pc bpc" id="L147" title="1 of 2 branches missed.">        if(distance &lt; 0) {</span>
+<span class="nc" id="L148">            throw new IllegalArgumentException(&quot;Distance must be greater than 0&quot;);</span>
+        }
+
+<span class="fc" id="L151">        room1.addConnection(room2, distance);</span>
+<span class="fc" id="L152">        room2.addConnection(room1, distance);</span>
+<span class="fc" id="L153">    }</span>
+
+    /**
+     * The number of corridors that this room is connected to.
+     * @return the number of corridors that this room is connected to
+     */
+    public int numberOfConnections() {
+<span class="nc" id="L160">        return adjList().size();</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L165">        return id;</span>
+    }
+
+    /**
+     * Tests for equality.
+     * @param o room to compare this room to
+     * @return true if: the given object is a room, the ids of the rooms are the same, and
+     * the adjacency lists of the rooms are the same
+     */
+    @Override
+    public boolean equals(Object o) {
+<span class="pc bpc" id="L176" title="2 of 6 branches missed.">        return (o instanceof Room) &amp;&amp; this.id().equals(((Room) o).id()) &amp;&amp; this.adjList.equals(((Room) o).adjList);</span>
+    }
+
+    public static boolean equals(Room room1, Room room2) {
+<span class="nc" id="L180">        return room1.equals(room2);</span>
+    }
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
