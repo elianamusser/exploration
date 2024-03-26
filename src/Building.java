@@ -1,4 +1,5 @@
-package exploration.source;
+package exploration.src;
+
 import java.util.*;
 
 /**

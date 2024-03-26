@@ -1,8 +1,11 @@
 package exploration.Test;
 
 import java.util.*;
-import exploration.source.*;
+
 import org.junit.Test;
+
+import exploration.src.*;
+
 import org.junit.Assert;
 
 public class BuildingTest{

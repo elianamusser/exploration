@@ -1,4 +1,4 @@
-<!-- <!--
+<!-- 
 Project directory structure:
   build.xml : this file
   .gitignore: git ignore files for Java (EECS 293 version).
@@ -124,4 +124,4 @@ $ANT_HOME/lib must contain (see Ant-JUnit and JaCoCo installation guides):
             </fileset>
         </javadoc>
     </target>
-</project> -->
+</project>
