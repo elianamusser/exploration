@@ -1,4 +1,4 @@
-package Classes;
+package exploration.source;
 
 /**
  * A corridor, connecting two rooms.

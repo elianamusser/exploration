@@ -1,4 +1,4 @@
-<!--
+<!-- <!--
 Project directory structure:
   build.xml : this file
   .gitignore: git ignore files for Java (EECS 293 version).
@@ -21,7 +21,6 @@ $ANT_HOME/lib must contain (see Ant-JUnit and JaCoCo installation guides):
 
 -->
 
-<!-- TODO: change the name to the name of the project given in the assignment (such as "count") -->
 <project name="exploration" xmlns:jacoco="antlib:org.jacoco.ant">
     <!--   Directory with source files -->
     <property name="src.dir" value="src"/>
@@ -125,4 +124,4 @@ $ANT_HOME/lib must contain (see Ant-JUnit and JaCoCo installation guides):
             </fileset>
         </javadoc>
     </target>
-</project>
+</project> -->

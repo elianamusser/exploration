@@ -1,13 +1,11 @@
-package Test;
+package exploration.Test;
 
 import java.util.*;
-import org.junit.*;
+import exploration.source.*;
+import org.junit.Test;
 import org.junit.Assert;
-import Classes.*;
 
 public class BuildingTest{
-
-    //todo - change to junit 4
 
     final Room a = new Room("a");
     final Room b = new Room("b");
