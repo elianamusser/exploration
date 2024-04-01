@@ -32,9 +32,11 @@ For robustness:
 Barricade 
 - pros
 	- centralized error handling -> consistency
-	- 
+	- reducing repeated code
 - cons
+	- tight coupling
+	- since it's in a separate class, the error handling may not be clear from the main method
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkzNjc3NjA1MV19
+eyJoaXN0b3J5IjpbLTEwNzI3NTA4MTVdfQ==
 -->
