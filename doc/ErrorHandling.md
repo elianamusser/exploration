@@ -29,7 +29,7 @@ For robustness:
 
 ## Error Handling Strategy
 
-Barricade 
+**Barricade** 
 - pros
 	- centralized error handling -> consistency
 	- reducing repeated code
@@ -53,6 +53,7 @@ Local error handler:
 - cons
 	- lots of repeated code
 
+Barricade seems like the best option. Back
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMDM2NzUxOTBdfQ==
+eyJoaXN0b3J5IjpbLTE4NDE5OTAxMzZdfQ==
 -->
