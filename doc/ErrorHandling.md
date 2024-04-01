@@ -25,8 +25,16 @@ Console:
 
 For robustness:
 - if an input or logical error is encountered, print a relevant error message to notify the user, and move to next input.  do not modify the map
-- 
+- do not close the program until user specifies to
+
+## Error Handling Strategy
+
+Barricade 
+- pros
+	- centralized error handling -> consistency
+	- 
+- cons
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1OTEzMTg1MF19
+eyJoaXN0b3J5IjpbLTkzNjc3NjA1MV19
 -->
