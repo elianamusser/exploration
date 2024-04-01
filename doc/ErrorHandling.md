@@ -27,6 +27,8 @@ For robustness:
 - if an input or logical error is encountered, print a relevant error message to notify the user, and move to next input.  do not modify the map
 - do not close the program until user specifies to
 
+**Decision diagram here**
+
 ## Error Handling Strategy
 
 **Barricade** 
@@ -53,7 +55,9 @@ Local error handler:
 - cons
 	- lots of repeated code
 
-Barricade seems like the best option. Back
+Barricade seems like the best option. Backup plan will be a global error handler with methods that return status variables.
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NDE5OTAxMzZdfQ==
+eyJoaXN0b3J5IjpbLTE3NDg5OTExMThdfQ==
 -->
