@@ -27,9 +27,11 @@ For robustness:
 - if an input or logical error is encountered, print a relevant error message to notify the user, and move to next input.  do not modify the map
 - do not close the program until user specifies to
 
-**Decision diagram here**
+**TODO: Decision diagram here**
 
-**Barricade diagram here**
+**TODO: Barricade diagram here**
+
+**TODO: reference 8-2 and chp 8 checklist**
 
 ## Error Handling Strategy
 
@@ -61,5 +63,5 @@ Barricade seems like the best option. Backup plan will be a global error handler
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMjk5MDMzNjZdfQ==
+eyJoaXN0b3J5IjpbMTM0NTQxMjUzMl19
 -->
