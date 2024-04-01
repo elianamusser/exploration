@@ -1,9 +1,9 @@
 # Possible Errors:
 **Non-Compliant Input Formats**
-- non-numerical characters
+- non-integer characters
 - improper separator characters which aren't spaces
 - more or less than 3 fields per line
-- negative numbers
+- any negative numbers
 - for distances, < 0
 
 **Logical Input Errors**
@@ -27,5 +27,5 @@ For robustness:
 - if an input or logical error is encountered, print a relevant error message to notify the user, and move to next input.  do not modify the map
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzODQ2NTc3NzldfQ==
+eyJoaXN0b3J5IjpbLTkyNzk3NzczM119
 -->
