@@ -49,8 +49,10 @@ Global error handler
 
 Local error handler:
 - pros
-	- 
+	- no coupling with other type
+- cons
+	- lots of repeated code
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNDMzNjUyMTddfQ==
+eyJoaXN0b3J5IjpbLTExMDM2NzUxOTBdfQ==
 -->
