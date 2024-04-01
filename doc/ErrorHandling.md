@@ -25,7 +25,8 @@ Console:
 
 For robustness:
 - if an input or logical error is encountered, print a relevant error message to notify the user, and move to next input.  do not modify the map
+- 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkyNzk3NzczM119
+eyJoaXN0b3J5IjpbLTE1OTEzMTg1MF19
 -->
