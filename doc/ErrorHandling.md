@@ -29,6 +29,8 @@ For robustness:
 
 **Decision diagram here**
 
+**Barricade diagram here**
+
 ## Error Handling Strategy
 
 **Barricade** 
@@ -59,5 +61,5 @@ Barricade seems like the best option. Backup plan will be a global error handler
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NDg5OTExMThdfQ==
+eyJoaXN0b3J5IjpbLTExMjk5MDMzNjZdfQ==
 -->
