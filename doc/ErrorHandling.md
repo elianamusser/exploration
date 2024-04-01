@@ -44,8 +44,13 @@ Global error handler
 	- consistency
 	- can return status variable
 - cons
+	- tight coupling
+	- barricade might make the code more concise, by returning the correct values
+
+Local error handler:
+- pros
 	- 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMDc2Mjg3NDFdfQ==
+eyJoaXN0b3J5IjpbLTExNDMzNjUyMTddfQ==
 -->
