@@ -33,10 +33,19 @@ Barricade
 - pros
 	- centralized error handling -> consistency
 	- reducing repeated code
+	- methods can return the "sanitized" value
 - cons
 	- tight coupling
 	- since it's in a separate class, the error handling may not be clear from the main method
+	- methods will return the value, not a status variable
+
+Global error handler
+- pros
+	- consistency
+	- can return status variable
+- cons
+	- 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNzI3NTA4MTVdfQ==
+eyJoaXN0b3J5IjpbLTEzMDc2Mjg3NDFdfQ==
 -->
