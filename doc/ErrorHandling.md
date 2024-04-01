@@ -9,7 +9,11 @@
 **Logical Input Errors**
 - unreachable connections
 - the same room number repeated twice in one line
-- 
+- at least one of the given rooms must already be in the building, to connect the new room to 
+
+# Implementation
+For robustness:
+- if an 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA2NzUzMzEzOF19
+eyJoaXN0b3J5IjpbLTE1MDU2NzY1MjZdfQ==
 -->
