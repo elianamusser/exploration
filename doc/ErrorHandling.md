@@ -14,7 +14,7 @@
 
 **Other Errors**
 - no given starting room
-- ending input stream without entering any connections - (should this be an error?
+- ending input stream without entering any connections - (should this be an error?)
 - exceeding a max number of rooms & connections (100?)
 
 # Implementation
@@ -24,8 +24,8 @@ Console:
 > Enter room connections. Type "done" or "finish" to end the inputs. Type "cancel" to stop the program.
 
 For robustness:
-- if an input or logical error is encountered, print a relevant error message to notify the user, and do not modify the map
-- 
+- if an input or logical error is encountered, print a relevant error message to notify the user, and move to next input.  do not modify the map
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzIyMDU2NjUyXX0=
+eyJoaXN0b3J5IjpbLTEzODQ2NTc3NzldfQ==
 -->
