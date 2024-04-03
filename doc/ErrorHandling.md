@@ -104,7 +104,8 @@ highest level method (String userInput) {
 	1) check for input errors
 	int index <- 0
 	for every char c in userInput:
-		if index is 0 or even, ensure input is an int
+		if char is a room #, ensure input is a positive int
+		if char i
 		
 		increment index
 	
@@ -116,6 +117,6 @@ highest level method (String userInput) {
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDI1NzY4NTU5LC0xNzE4NDk5MDA1LDEzND
-U0MTI1MzJdfQ==
+eyJoaXN0b3J5IjpbLTE5NjczODMzNTgsLTE3MTg0OTkwMDUsMT
+M0NTQxMjUzMl19
 -->
