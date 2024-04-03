@@ -111,7 +111,9 @@ highest level method (String userInput) {
 	if iterator has next, throw error: input should only be 5 chars
 
 	2) check for logical errors
-	throw error if: room 
+	throw error if: 
+		room #s are the same
+		
 
 
 	
@@ -124,6 +126,6 @@ highest level method (String userInput) {
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4ODgxOTQ5ODEsLTE3MTg0OTkwMDUsMT
-M0NTQxMjUzMl19
+eyJoaXN0b3J5IjpbMjA3NzU3MjI0NCwtMTcxODQ5OTAwNSwxMz
+Q1NDEyNTMyXX0=
 -->
