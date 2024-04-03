@@ -63,12 +63,18 @@ I will use one Barricade class. Backup plan will be a global error handler with 
 # Pseudocode
 
 APP:
-start room <- null
+Building building;
 
 while start room is invalid:
 	start room <- entered starting room
+	if (invalid): 
+		print error message
+	else: 
+		building <- start room
+		exit loop
+
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTMzMDMxODA1LDEzNDU0MTI1MzJdfQ==
+eyJoaXN0b3J5IjpbMTQ3NTIzMDk4OSwxMzQ1NDEyNTMyXX0=
 -->
