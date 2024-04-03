@@ -100,8 +100,9 @@ main method {
 ## Barricade:
 
 ```
-highest level method {
-
+highest level method (String userInput) {
+	
+	
 
 
 
@@ -110,5 +111,6 @@ highest level method {
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MTg0OTkwMDUsMTM0NTQxMjUzMl19
+eyJoaXN0b3J5IjpbLTIzODM3NDczNCwtMTcxODQ5OTAwNSwxMz
+Q1NDEyNTMyXX0=
 -->
