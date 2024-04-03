@@ -17,14 +17,14 @@
 - ending input stream without entering any connections - (should this be an error?)
 - exceeding a max number of rooms & connections (100?)
 
-# Implementation
+# Pseudocode
 
-Console:
-> Enter name of starting room:
-> Enter room connections. Type "done" or "finish" to end the inputs. Type "cancel" to stop the program.
+# Requirements
 
 For robustness:
-- if an input or logical error is encountered, print a relevant error message to notify the user, and move to next input.  do not modify the map
+- input must be in form: int + space + int + space + int
+- if an input or logical error is encountered, print a relevant error message to notify the user, and move to next input without modifying the map
+- if an error is not encountered, 
 - do not close the program until user specifies to
 
 **TODO: Decision diagram here**
@@ -63,5 +63,5 @@ Barricade seems like the best option. Backup plan will be a global error handler
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM0NTQxMjUzMl19
+eyJoaXN0b3J5IjpbLTExNzMxOTMzMSwxMzQ1NDEyNTMyXX0=
 -->
