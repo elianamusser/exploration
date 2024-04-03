@@ -64,39 +64,51 @@ I will use one Barricade class. Backup plan will be a global error handler with 
 
 ## App:
 ```
-Building building;
+main method {
 
-print: Intro message
-print: "Enter start room"
+	Building building;
 
-while start room is invalid:
-	var start room <- entered starting room
-	if (invalid): 
-		print error message, and repeat loop
-	else: 
-		initialize building with start room
-		exit loop
+	print: Intro message
+	print: "Enter start room"
 
-print: "Enter room connections"
+	while start room is invalid:
+		var start room <- entered starting room
+		if (invalid): 
+			print error message, and repeat loop
+		else: 
+			initialize building with start room
+			exit loop
 
-while exit message has not been inputted:
-	var input <- user input
-	if input is exit message: 
-		exit loop
-	try {
-		add user input to building w/ barricade method
-	} catch IllegalArgumentException {
-		skip to next user input (without modifying building)
-	}
-	
-other operations here?
-print: farewell message
+	print: "Enter room connections"
 
+	while exit message has not been inputted:
+		var input <- user input
+		if input is exit message: 
+			exit loop
+		try {
+			add user input to building w/ barricade method
+		} catch IllegalArgumentException {
+			skip to next user input (without modifying building)
+		}
+		
+	other operations here?
+	print: farewell message
+
+}
 ```
 
 ## Barricade:
 
+```
+highest level method {
 
+
+
+
+
+}
+
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzc4Mjk3MzAxLDEzNDU0MTI1MzJdfQ==
+eyJoaXN0b3J5IjpbLTkwMjU0NDc2MiwxMzQ1NDEyNTMyXX0=
 -->
