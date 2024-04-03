@@ -101,9 +101,12 @@ main method {
 
 ```
 highest level method (String userInput) {
-	int index = 0
+	1) check for input errors
+	int index <- 0
 	for every char c in userInput:
+		if index is 0 or even, ensure input is an int
 		
+		increment index
 	
 
 
@@ -113,6 +116,6 @@ highest level method (String userInput) {
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDg0MDgxNzQ0LC0xNzE4NDk5MDA1LDEzND
+eyJoaXN0b3J5IjpbNDI1NzY4NTU5LC0xNzE4NDk5MDA1LDEzND
 U0MTI1MzJdfQ==
 -->
