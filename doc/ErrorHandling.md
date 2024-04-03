@@ -62,7 +62,7 @@ I will use one Barricade class. Backup plan will be a global error handler with 
 
 # Pseudocode
 
-APP:
+## App:
 ```
 Building building;
 
@@ -86,15 +86,17 @@ while exit message has not been inputted:
 	try {
 		add user input to building w/ barricade method
 	} catch IllegalArgumentException {
-		skip to next user input
+		skip to next user input (without modifying building)
 	}
-	if 
 	
-	
+other operations here?
 print: farewell message
 
 ```
 
+## Barricade:
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ0OTg1MDA3LDEzNDU0MTI1MzJdfQ==
+eyJoaXN0b3J5IjpbMzc4Mjk3MzAxLDEzNDU0MTI1MzJdfQ==
 -->
