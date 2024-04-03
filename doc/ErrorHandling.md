@@ -58,11 +58,17 @@ Local error handler:
 - cons
 	- lots of repeated code
 
-One Barricade class seems like the best option. Backup plan will be a global error handler with methods that return status variables.
+I will use one Barricade class. Backup plan will be a global error handler with methods that return status variables.
 
 # Pseudocode
 
+APP:
+start room <- null
+
+while start room is invalid:
+	start room <- entered starting room
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkxNjg2NDI3NiwxMzQ1NDEyNTMyXX0=
+eyJoaXN0b3J5IjpbNTMzMDMxODA1LDEzNDU0MTI1MzJdfQ==
 -->
