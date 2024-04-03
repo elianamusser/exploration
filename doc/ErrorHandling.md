@@ -83,11 +83,16 @@ while exit message has not been inputted:
 	var input <- user input
 	if input is exit message: 
 		exit loop
+	try {
+		add user input to building w/ barricade method
+	} catch IllegalArgumentException {
+
 	
 	
+print: farewell message
 
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNTg5MzgwOSwxMzQ1NDEyNTMyXX0=
+eyJoaXN0b3J5IjpbMjAxODk1MDI5MywxMzQ1NDEyNTMyXX0=
 -->
