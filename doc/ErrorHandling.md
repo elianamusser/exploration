@@ -73,7 +73,7 @@ main method {
 
 	while start room is invalid:
 		var start room <- entered starting room
-		if (invalid): 
+		if invalid: 
 			print error message, and repeat loop
 		else: 
 			initialize building with start room
@@ -110,5 +110,5 @@ highest level method {
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkwMjU0NDc2MiwxMzQ1NDEyNTMyXX0=
+eyJoaXN0b3J5IjpbLTE3MTg0OTkwMDUsMTM0NTQxMjUzMl19
 -->
