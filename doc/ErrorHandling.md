@@ -17,14 +17,12 @@
 - ending input stream without entering any connections - (should this be an error?)
 - exceeding a max number of rooms & connections (100?)
 
-# Pseudocode
-
 # Requirements
 
 For robustness:
 - input must be in form: int + space + int + space + int
 - if an input or logical error is encountered, print a relevant error message to notify the user, and move to next input without modifying the map
-- if an error is not encountered, 
+- if an error is not encountered, parse the string to add the data to the building
 - do not close the program until user specifies to
 
 **TODO: Decision diagram here**
@@ -33,7 +31,8 @@ For robustness:
 
 **TODO: reference 8-2 and chp 8 checklist**
 
-## Error Handling Strategy
+
+# Error Handling Strategy
 
 **Barricade** 
 - pros
@@ -59,9 +58,11 @@ Local error handler:
 - cons
 	- lots of repeated code
 
-Barricade seems like the best option. Backup plan will be a global error handler with methods that return status variables.
+One Barricade class seems like the best option. Backup plan will be a global error handler with methods that return status variables.
+
+# Pseudocode
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNzMxOTMzMSwxMzQ1NDEyNTMyXX0=
+eyJoaXN0b3J5IjpbMTkxNjg2NDI3NiwxMzQ1NDEyNTMyXX0=
 -->
