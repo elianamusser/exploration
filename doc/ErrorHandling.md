@@ -86,7 +86,9 @@ while exit message has not been inputted:
 	try {
 		add user input to building w/ barricade method
 	} catch IllegalArgumentException {
-
+		skip to next user input
+	}
+	if 
 	
 	
 print: farewell message
@@ -94,5 +96,5 @@ print: farewell message
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAxODk1MDI5MywxMzQ1NDEyNTMyXX0=
+eyJoaXN0b3J5IjpbMTQ0OTg1MDA3LDEzNDU0MTI1MzJdfQ==
 -->
