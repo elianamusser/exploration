@@ -101,16 +101,18 @@ main method {
 
 ```
 highest level method (String userInput) {
+	int index = 0
+	for every char c in userInput:
+		
 	
-	
 
 
 
-
+	return userInput
 }
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIzODM3NDczNCwtMTcxODQ5OTAwNSwxMz
-Q1NDEyNTMyXX0=
+eyJoaXN0b3J5IjpbNDg0MDgxNzQ0LC0xNzE4NDk5MDA1LDEzND
+U0MTI1MzJdfQ==
 -->
