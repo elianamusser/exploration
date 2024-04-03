@@ -102,12 +102,14 @@ main method {
 ```
 highest level method (String userInput) {
 	1) check for input errors
-	int index <- 0
-	for every char c in userInput:
-		if char is a room #, ensure input is a positive int
-		if char i
-		
-		increment index
+	iterator <- iterator over chars in userI
+	loop 5 times:
+		char c <- next char in userInput
+		if c is a room #, ensure input is a positive int
+		if c is a distance, ensure input is int > 0
+		if c is a separator, ensure it's a space
+	if userInput has more chars, 
+	
 	
 
 
@@ -117,6 +119,6 @@ highest level method (String userInput) {
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NjczODMzNTgsLTE3MTg0OTkwMDUsMT
-M0NTQxMjUzMl19
+eyJoaXN0b3J5IjpbMTQwMDkxNjU1NywtMTcxODQ5OTAwNSwxMz
+Q1NDEyNTMyXX0=
 -->
