@@ -63,7 +63,7 @@ I will use one Barricade class. Backup plan will be a global error handler with 
 # Pseudocode
 
 APP:
-``
+```
 Building building;
 
 print: Intro message
@@ -77,8 +77,17 @@ while start room is invalid:
 		initialize building with start room
 		exit loop
 
-print: "Enter 
+print: "Enter room connections"
+
+while exit message has not been inputted:
+	var input <- user input
+	if input is exit message: 
+		exit loop
+	
+	
+
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzMzMTg3MDkyLDEzNDU0MTI1MzJdfQ==
+eyJoaXN0b3J5IjpbLTExNTg5MzgwOSwxMzQ1NDEyNTMyXX0=
 -->
