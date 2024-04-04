@@ -116,6 +116,7 @@ method to ensure valid input (String userInput) {
 		} catch (exception thrown if index out of bounds) {
 			throw IllegalArgumentException: "only 3 integers can be inputted"
 		}
+		index++
 	if iterator has next: 
 		throw IllegalArgumentException
 	
@@ -135,6 +136,6 @@ method to ensure valid input (String userInput) {
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDk2OTU5MzYwLDIwNzc1NzIyNDQsLTE3MT
-g0OTkwMDUsMTM0NTQxMjUzMl19
+eyJoaXN0b3J5IjpbLTg1ODA1MjgyMiwyMDc3NTcyMjQ0LC0xNz
+E4NDk5MDA1LDEzNDU0MTI1MzJdfQ==
 -->
