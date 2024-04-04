@@ -113,7 +113,7 @@ static void validInputData (String userInput) {
 		distance <= 0: exception
 		room #s the same: exception
 		either room isn't in the building: exception
-		the rooms
+		the rooms already have a corridor: exception
 
 	return inputData
 }
@@ -139,6 +139,6 @@ static int[] dataWithoutInputErrors (String userInput) {
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM0MzMxNTYxLDIwNzc1NzIyNDQsLTE3MT
-g0OTkwMDUsMTM0NTQxMjUzMl19
+eyJoaXN0b3J5IjpbMTg0NjU0Mzg0MywyMDc3NTcyMjQ0LC0xNz
+E4NDk5MDA1LDEzNDU0MTI1MzJdfQ==
 -->
