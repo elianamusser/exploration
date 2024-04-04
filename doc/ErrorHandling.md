@@ -84,10 +84,12 @@ main method {
 
 	print: "Enter room connections"
 
-	while exit message has not been inputted:
+	final int SAFETY_COUNTER <- 100
+	int iterations <- 0
+	while true:
 		var input <- user input
-		if input is exit message: 
-			exit loop
+		if input is exit message OR iterations == SAFETY_COUNTER: 
+			exit loop 	//exit condition 
 		try {
 			int[] data <- Barricade::validInputData
 			Building::addRoom with data
@@ -173,7 +175,7 @@ CHECKLIST: Defensive Programming
 - ❑ Are all exceptions caught? 
 - ❑ Do error messages avoid providing information that would help an attacker break into the system?
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU1ODU1MjYyMSwtNTE1OTg3MjY1LDE4ND
-Y1NDM4NDMsMjA3NzU3MjI0NCwtMTcxODQ5OTAwNSwxMzQ1NDEy
-NTMyXX0=
+eyJoaXN0b3J5IjpbNTUxMjA0OTI5LC01MTU5ODcyNjUsMTg0Nj
+U0Mzg0MywyMDc3NTcyMjQ0LC0xNzE4NDk5MDA1LDEzNDU0MTI1
+MzJdfQ==
 -->
