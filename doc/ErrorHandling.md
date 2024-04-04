@@ -23,14 +23,14 @@ For robustness:
 - if an input or logical error is encountered, print a relevant error message to notify the user, and move to next input without modifying the map.
 - do not close the program until user specifies to
 
-Other Re
+Other Requirements:
 - input must be in form: [optional spaces] + int + space + int + space + int + [optional spaces]
 - if an error is not encountered, parse the string to add the data to the building
 
 
 # Error Handling Strategy
 
-**Barricade** 
+## Barricade 
 - pros
 	- centralized error handling -> consistency
 	- reducing repeated code
@@ -40,21 +40,8 @@ Other Re
 	- since it's in a separate class, the error handling may not be clear from the main method
 	- methods will return the value, not a status variable
 
-Global error handler
-- pros
-	- consistency
-	- can return status variable
-- cons
-	- tight coupling
-	- barricade might make the code more concise, by returning the correct values
 
-Local error handler:
-- pros
-	- no coupling with other type
-- cons
-	- lots of repeated code
-
-I will use one Barricade class. Backup plan will be a global error handler with methods that return status variables.
+APP -> BARRICADE -> BUILDING (partially)
 
 # Pseudocode
 
@@ -184,9 +171,9 @@ CHECKLIST: Defensive Programming
 - ❑ Are all exceptions caught? 
 - ❑ Do error messages avoid providing information that would help an attacker break into the system?
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkwODkxOTU1MCw5NDkyMDcwNzIsNDc0Nz
-I2NjQsMTM5NjIyMjk4NywtMzc5MDEzODMzLDEzMjc5NjQ2OTEs
-NjkxNjYxNDYzLC02NTIwOTY1NDksLTY1Njc5MjkyNiwtNDMxOT
-g2NCwtNTE1OTg3MjY1LDE4NDY1NDM4NDMsMjA3NzU3MjI0NCwt
-MTcxODQ5OTAwNSwxMzQ1NDEyNTMyXX0=
+eyJoaXN0b3J5IjpbNjM2MDAwMTg1LDk0OTIwNzA3Miw0NzQ3Mj
+Y2NCwxMzk2MjIyOTg3LC0zNzkwMTM4MzMsMTMyNzk2NDY5MSw2
+OTE2NjE0NjMsLTY1MjA5NjU0OSwtNjU2NzkyOTI2LC00MzE5OD
+Y0LC01MTU5ODcyNjUsMTg0NjU0Mzg0MywyMDc3NTcyMjQ0LC0x
+NzE4NDk5MDA1LDEzNDU0MTI1MzJdfQ==
 -->
