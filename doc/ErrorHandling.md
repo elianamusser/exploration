@@ -9,7 +9,7 @@
 **Logical Input Errors**
 - unreachable connections
 - the same room number repeated twice in one line
-- at least one of the given rooms must already be in the building, to connect the new room to 
+- at least one of the given rooms must already be in the building, to connect the new room to **(already covered by Building::addRoom)**
 - no given starting room
 
 **Other Errors**
@@ -87,6 +87,7 @@ main method {
 			exit loop
 		try {
 			int[] data <- Barricade::validInputData
+			
 		} catch IllegalArgumentException {
 			skip to next user input (without modifying building)
 		}
@@ -140,6 +141,6 @@ static void validInputData (String userInput) {
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI4NzcwMjkzOSwyMDc3NTcyMjQ0LC0xNz
+eyJoaXN0b3J5IjpbLTc4MTE5OTg1NywyMDc3NTcyMjQ0LC0xNz
 E4NDk5MDA1LDEzNDU0MTI1MzJdfQ==
 -->
