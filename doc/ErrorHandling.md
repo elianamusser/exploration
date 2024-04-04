@@ -115,7 +115,7 @@ check user input is valid:
 for as many ints as should be in the input:
 	if it's a room #, ensure it's a positive integer or 0
 	if it's a distance, ensure it's a positive integer
-	
+	for start room, i only want one int
 
 
 
@@ -191,9 +191,9 @@ CHECKLIST: Defensive Programming
 - ❑ Are all exceptions caught? 
 - ❑ Do error messages avoid providing information that would help an attacker break into the system?
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjMyNjgxMzI0LDEzOTYyMjI5ODcsLTM3OT
-AxMzgzMywxMzI3OTY0NjkxLDY5MTY2MTQ2MywtNjUyMDk2NTQ5
-LC02NTY3OTI5MjYsLTQzMTk4NjQsLTUxNTk4NzI2NSwxODQ2NT
-QzODQzLDIwNzc1NzIyNDQsLTE3MTg0OTkwMDUsMTM0NTQxMjUz
-Ml19
+eyJoaXN0b3J5IjpbNDc0NzI2NjQsMTM5NjIyMjk4NywtMzc5MD
+EzODMzLDEzMjc5NjQ2OTEsNjkxNjYxNDYzLC02NTIwOTY1NDks
+LTY1Njc5MjkyNiwtNDMxOTg2NCwtNTE1OTg3MjY1LDE4NDY1ND
+M4NDMsMjA3NzU3MjI0NCwtMTcxODQ5OTAwNSwxMzQ1NDEyNTMy
+XX0=
 -->
