@@ -124,6 +124,7 @@ protected static int[] validInputData (String userInput) {
 		the rooms already have a corridor: exception
 	reduce code repetition: i'm checking a condition and doing the same if statement
 	- make a bunch of intermediate bools?
+	- helper?
 
 	assert postconditions:
 		every index of inputData is initialized with a valid int
@@ -182,7 +183,7 @@ CHECKLIST: Defensive Programming
 - ❑ Are all exceptions caught? 
 - ❑ Do error messages avoid providing information that would help an attacker break into the system?
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY1MjA5NjU0OSwtNjU2NzkyOTI2LC00Mz
-E5ODY0LC01MTU5ODcyNjUsMTg0NjU0Mzg0MywyMDc3NTcyMjQ0
-LC0xNzE4NDk5MDA1LDEzNDU0MTI1MzJdfQ==
+eyJoaXN0b3J5IjpbNjkxNjYxNDYzLC02NTIwOTY1NDksLTY1Nj
+c5MjkyNiwtNDMxOTg2NCwtNTE1OTg3MjY1LDE4NDY1NDM4NDMs
+MjA3NzU3MjI0NCwtMTcxODQ5OTAwNSwxMzQ1NDEyNTMyXX0=
 -->
