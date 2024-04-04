@@ -160,9 +160,9 @@ CHECKLIST: Defensive Programming
 - ❑ Does the code that checks for bad input data check for attempted buffer overflows, SQL injection, HTML injection, integer overflows, and other malicious inputs? 
 - ❑ Are all error-return codes checked?
 - X ❑ Are all exceptions caught? 
-- ❑ Do error messages avoid providing information that would help an attacker break into the system?
+- X ❑ Do error messages avoid providing information that would help an attacker break into the system?
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NjYzMzYxOCw5NDkyMDcwNzIsNDc0Nz
+eyJoaXN0b3J5IjpbMjAyNDQ4NTkyNiw5NDkyMDcwNzIsNDc0Nz
 I2NjQsMTM5NjIyMjk4NywtMzc5MDEzODMzLDEzMjc5NjQ2OTEs
 NjkxNjYxNDYzLC02NTIwOTY1NDksLTY1Njc5MjkyNiwtNDMxOT
 g2NCwtNTE1OTg3MjY1LDE4NDY1NDM4NDMsMjA3NzU3MjI0NCwt
