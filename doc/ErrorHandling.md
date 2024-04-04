@@ -102,6 +102,7 @@ main method {
 ```
 highest level method (String stringInput) {
 	1) check for input errors
+	goal: iterate thru every char in userInput, adding the data to an array
 	int[] inputData <- size 3
 	char[] userInput <- stringInput to char array
 	iterator iterator <- userInput iterator
@@ -112,7 +113,9 @@ highest level method (String stringInput) {
 			throw IllegalArgumentException w/ relevant error msg
 		}
 		while loop: until input isn't a space, or iterator doesn't have next
-		
+	if iterator has next: 
+		throw IllegalArgumentException
+	
 		
 
 	2) check for logical errors
@@ -131,6 +134,6 @@ highest level method (String stringInput) {
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMDM4ODI2OTEsMjA3NzU3MjI0NCwtMT
-cxODQ5OTAwNSwxMzQ1NDEyNTMyXX0=
+eyJoaXN0b3J5IjpbOTQ2NjI3MTA1LDIwNzc1NzIyNDQsLTE3MT
+g0OTkwMDUsMTM0NTQxMjUzMl19
 -->
