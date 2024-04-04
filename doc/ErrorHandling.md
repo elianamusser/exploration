@@ -21,14 +21,14 @@
 
 Robustness will be favored over correctness. 
 For robustness:
-- if an input or logical error is encountered, print a relevant error message to notify the user, and move to next input without modifying the map.
+- if an input or logical error is encountered, print a relevant error message to notify the user, and move to next input without modifying the map
 - do not close the program until user specifies to
 - if an error is not encountered, parse the string to add the data to the building
 
 ## Barricade
 
 I will use a barricade, in between the user input and Building class, for global error handling.
-It will throw `IllegalArgumentExceptions` with relevant messages. The error messages will be displayed to the user. 
+It will throw `IllegalArgumentExceptions` with relevant messages. The error messages will be displayed to the user. They will not shut down the program, but will skip to the next user input without modifying the data.
 
 APP (untrusted) -> BARRICADE -> BUILDING (partially trusted)
 
@@ -150,21 +150,21 @@ CHECKLIST: Defensive Programming
 ## Exceptions 
 - X ❑ Has your project defined a standardized approach to exception handling? 
 - X ❑ Have you considered alternatives to using an exception? 
-- ❑ Is the error handled locally rather than throwing a nonlocal exception, if possible? 
-- ❑ Does the code avoid throwing exceptions in constructors and destructors? 
-- ❑ Are all exceptions at the appropriate levels of abstraction for the routines that throw them? 
-- ❑ Does each exception include all relevant exception background information? 
-- ❑ Is the code free of empty catch blocks? (Or if an empty catch block truly is appropriate, is it documented?) 
+- X ❑ Is the error handled locally rather than throwing a nonlocal exception, if possible? 
+- X ❑ Does the code avoid throwing exceptions in constructors and destructors? 
+- X ❑ Are all exceptions at the appropriate levels of abstraction for the routines that throw them? 
+- X ❑ Does each exception include all relevant exception background information? 
+- X ❑ Is the code free of empty catch blocks? (Or if an empty catch block truly is appropriate, is it documented?) 
 
 ## Security Issues 
 - ❑ Does the code that checks for bad input data check for attempted buffer overflows, SQL injection, HTML injection, integer overflows, and other malicious inputs? 
 - ❑ Are all error-return codes checked?
-- ❑ Are all exceptions caught? 
+- X ❑ Are all exceptions caught? 
 - ❑ Do error messages avoid providing information that would help an attacker break into the system?
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzMzODE3OTY1LDk0OTIwNzA3Miw0NzQ3Mj
-Y2NCwxMzk2MjIyOTg3LC0zNzkwMTM4MzMsMTMyNzk2NDY5MSw2
-OTE2NjE0NjMsLTY1MjA5NjU0OSwtNjU2NzkyOTI2LC00MzE5OD
-Y0LC01MTU5ODcyNjUsMTg0NjU0Mzg0MywyMDc3NTcyMjQ0LC0x
-NzE4NDk5MDA1LDEzNDU0MTI1MzJdfQ==
+eyJoaXN0b3J5IjpbLTE5NjYzMzYxOCw5NDkyMDcwNzIsNDc0Nz
+I2NjQsMTM5NjIyMjk4NywtMzc5MDEzODMzLDEzMjc5NjQ2OTEs
+NjkxNjYxNDYzLC02NTIwOTY1NDksLTY1Njc5MjkyNiwtNDMxOT
+g2NCwtNTE1OTg3MjY1LDE4NDY1NDM4NDMsMjA3NzU3MjI0NCwt
+MTcxODQ5OTAwNSwxMzQ1NDEyNTMyXX0=
 -->
