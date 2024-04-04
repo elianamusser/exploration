@@ -26,11 +26,6 @@ For robustness:
 - if an error is not encountered, parse the string to add the data to the building
 - do not close the program until user specifies to
 
-**TODO: Barricade diagram here**
-
-
-
-**TODO: reference 8-2 and chp 8 checklist**
 
 
 # Error Handling Strategy
@@ -189,7 +184,7 @@ CHECKLIST: Defensive Programming
 - ❑ Are all exceptions caught? 
 - ❑ Do error messages avoid providing information that would help an attacker break into the system?
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNTE3NDE2MDMsOTQ5MjA3MDcyLDQ3ND
+eyJoaXN0b3J5IjpbLTIxMTEwODg2MjUsOTQ5MjA3MDcyLDQ3ND
 cyNjY0LDEzOTYyMjI5ODcsLTM3OTAxMzgzMywxMzI3OTY0Njkx
 LDY5MTY2MTQ2MywtNjUyMDk2NTQ5LC02NTY3OTI5MjYsLTQzMT
 k4NjQsLTUxNTk4NzI2NSwxODQ2NTQzODQzLDIwNzc1NzIyNDQs
