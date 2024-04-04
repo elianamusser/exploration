@@ -5,7 +5,7 @@
 - more or less than 3 fields per line
 - any negative numbers
 - for distances, < 0
-
+ 
 **Logical Input Errors**
 - unreachable connections
 - the same room number repeated twice in one line
@@ -126,6 +126,6 @@ highest level method (String userInput) {
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA3NzU3MjI0NCwtMTcxODQ5OTAwNSwxMz
-Q1NDEyNTMyXX0=
+eyJoaXN0b3J5IjpbLTE4NTcxMDMzODgsMjA3NzU3MjI0NCwtMT
+cxODQ5OTAwNSwxMzQ1NDEyNTMyXX0=
 -->
