@@ -111,7 +111,7 @@ main method {
 ## Barricade:
 
 ```
-public static int[] validInputData (String userInput) {
+protected static int[] validInputData (String userInput) {
 	1) check for input errors
 	int[] inputData <- Barricade::dataWithoutInputErrors(userInput) 
 	
@@ -180,7 +180,7 @@ CHECKLIST: Defensive Programming
 - ❑ Are all exceptions caught? 
 - ❑ Do error messages avoid providing information that would help an attacker break into the system?
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5ODgzNzMzNTUsLTQzMTk4NjQsLTUxNT
-k4NzI2NSwxODQ2NTQzODQzLDIwNzc1NzIyNDQsLTE3MTg0OTkw
-MDUsMTM0NTQxMjUzMl19
+eyJoaXN0b3J5IjpbLTY1Njc5MjkyNiwtNDMxOTg2NCwtNTE1OT
+g3MjY1LDE4NDY1NDM4NDMsMjA3NzU3MjI0NCwtMTcxODQ5OTAw
+NSwxMzQ1NDEyNTMyXX0=
 -->
