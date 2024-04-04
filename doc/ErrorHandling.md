@@ -105,19 +105,18 @@ method to ensure valid input (String userInput) {
 		goal: iterate thru every char in userInput, adding the data to an array
 	int[] inputData <- size 3
 	iterator iterator <- iterator over userInput as a char array
-	int arrIndex <- 0
-	while iterator has next:	//add data from userInput to inputData array
+	int arrIndex <- 0	//the index of inputData to update
+	while iterator has next AND arrIndex < 3:	//add data from userInput to inputData array
 		char c <- next in iterator
 		if c is a space: continue
 		try {
 			inputData[index] <- parsed int from c
 		} catch (exception thrown if c is not an int) {
 			throw IllegalArgumentException: "inputs must be integers"
-		} catch (exception thrown if index out of bounds) {
+		} catch (exception thrown if index out of bounds) {		//checked in while loop, but just in case
 			throw IllegalArgumentException: "only 3 integers can be inputted"
 		}
 		arrIndex++
-
 	
 	2) check for logical errors
 	throw error if: 
@@ -135,6 +134,6 @@ method to ensure valid input (String userInput) {
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI3NDk4OTAyNCwyMDc3NTcyMjQ0LC0xNz
-E4NDk5MDA1LDEzNDU0MTI1MzJdfQ==
+eyJoaXN0b3J5IjpbMjk0MTU0NjAwLDIwNzc1NzIyNDQsLTE3MT
+g0OTkwMDUsMTM0NTQxMjUzMl19
 -->
