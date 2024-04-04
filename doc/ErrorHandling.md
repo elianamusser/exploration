@@ -18,14 +18,14 @@
 - exceeding a max number of rooms & connections (100?)
 
 # Requirements
-Robustness will be favored over correctness.
-
+Robustness will be favored over correctness. 
 For robustness:
-- input must be in form: [optional spaces] + int + space + int + space + int + [optional spaces]
-- if an input or logical error is encountered, print a relevant error message to notify the user, and move to next input without modifying the map
-- if an error is not encountered, parse the string to add the data to the building
+- if an input or logical error is encountered, print a relevant error message to notify the user, and move to next input without modifying the map.
 - do not close the program until user specifies to
 
+Other Re
+- input must be in form: [optional spaces] + int + space + int + space + int + [optional spaces]
+- if an error is not encountered, parse the string to add the data to the building
 
 
 # Error Handling Strategy
@@ -184,9 +184,9 @@ CHECKLIST: Defensive Programming
 - ❑ Are all exceptions caught? 
 - ❑ Do error messages avoid providing information that would help an attacker break into the system?
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMTEwODg2MjUsOTQ5MjA3MDcyLDQ3ND
-cyNjY0LDEzOTYyMjI5ODcsLTM3OTAxMzgzMywxMzI3OTY0Njkx
-LDY5MTY2MTQ2MywtNjUyMDk2NTQ5LC02NTY3OTI5MjYsLTQzMT
-k4NjQsLTUxNTk4NzI2NSwxODQ2NTQzODQzLDIwNzc1NzIyNDQs
-LTE3MTg0OTkwMDUsMTM0NTQxMjUzMl19
+eyJoaXN0b3J5IjpbMTkwODkxOTU1MCw5NDkyMDcwNzIsNDc0Nz
+I2NjQsMTM5NjIyMjk4NywtMzc5MDEzODMzLDEzMjc5NjQ2OTEs
+NjkxNjYxNDYzLC02NTIwOTY1NDksLTY1Njc5MjkyNiwtNDMxOT
+g2NCwtNTE1OTg3MjY1LDE4NDY1NDM4NDMsMjA3NzU3MjI0NCwt
+MTcxODQ5OTAwNSwxMzQ1NDEyNTMyXX0=
 -->
