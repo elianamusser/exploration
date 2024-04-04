@@ -112,15 +112,18 @@ method to ensure valid input (String userInput) {
 		try {
 			inputData[index] <- parsed int from c
 		} catch (exception thrown if c is not an int) {
-			throw IllegalArgumentException: "inputs must be integers"
+			throw exception: "inputs must be integers"
 		} catch (exception thrown if index out of bounds) {		//checked in while loop, but just in case
-			throw IllegalArgumentException: "only 3 integers can be inputted"
+			throw exception: "only 3 integers can be inputted"
 		}
 		arrIndex++
 	
 	2) check for logical errors
-	throw error if: 
-		room #s are the same
+	switch(inputData): 
+		either room # < 0: exception
+		distance <= 0: excei
+		room #s the same: error
+		either room isn't in the building: error
 		
 
 
@@ -134,6 +137,6 @@ method to ensure valid input (String userInput) {
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjk0MTU0NjAwLDIwNzc1NzIyNDQsLTE3MT
-g0OTkwMDUsMTM0NTQxMjUzMl19
+eyJoaXN0b3J5IjpbLTk0OTMzNzg5OSwyMDc3NTcyMjQ0LC0xNz
+E4NDk5MDA1LDEzNDU0MTI1MzJdfQ==
 -->
