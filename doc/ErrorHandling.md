@@ -31,6 +31,8 @@ For robustness:
 
 **TODO: Barricade diagram here**
 
+
+
 **TODO: reference 8-2 and chp 8 checklist**
 
 
@@ -139,6 +141,6 @@ static int[] dataWithoutInputErrors (String userInput) {
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg0NjU0Mzg0MywyMDc3NTcyMjQ0LC0xNz
-E4NDk5MDA1LDEzNDU0MTI1MzJdfQ==
+eyJoaXN0b3J5IjpbLTUxNTk4NzI2NSwxODQ2NTQzODQzLDIwNz
+c1NzIyNDQsLTE3MTg0OTkwMDUsMTM0NTQxMjUzMl19
 -->
