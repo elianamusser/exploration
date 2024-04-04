@@ -17,18 +17,15 @@
 - ending input stream without entering any connections - (should this be an error?)
 - exceeding a max number of rooms & connections (100?)
 
-# Requirements
+# Error Handling Strategy
+
 Robustness will be favored over correctness. 
 For robustness:
 - if an input or logical error is encountered, print a relevant error message to notify the user, and move to next input without modifying the map.
 - do not close the program until user specifies to
-
-Other Requirements:
-- input must be in form: [optional spaces] + int + space + int + space + int + [optional spaces]
 - if an error is not encountered, parse the string to add the data to the building
 
-
-# Error Handling Strategy
+## Barricade
 
 I will use a barricade, in between the user input and Building class, for global error handling.
 It will throw `IllegalArgumentExceptions` with relevant messages. The error messages will be displayed to the user. 
@@ -165,9 +162,9 @@ CHECKLIST: Defensive Programming
 - ❑ Are all exceptions caught? 
 - ❑ Do error messages avoid providing information that would help an attacker break into the system?
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIyMzgyOTcxMCw5NDkyMDcwNzIsNDc0Nz
-I2NjQsMTM5NjIyMjk4NywtMzc5MDEzODMzLDEzMjc5NjQ2OTEs
-NjkxNjYxNDYzLC02NTIwOTY1NDksLTY1Njc5MjkyNiwtNDMxOT
-g2NCwtNTE1OTg3MjY1LDE4NDY1NDM4NDMsMjA3NzU3MjI0NCwt
-MTcxODQ5OTAwNSwxMzQ1NDEyNTMyXX0=
+eyJoaXN0b3J5IjpbMzMzODE3OTY1LDk0OTIwNzA3Miw0NzQ3Mj
+Y2NCwxMzk2MjIyOTg3LC0zNzkwMTM4MzMsMTMyNzk2NDY5MSw2
+OTE2NjE0NjMsLTY1MjA5NjU0OSwtNjU2NzkyOTI2LC00MzE5OD
+Y0LC01MTU5ODcyNjUsMTg0NjU0Mzg0MywyMDc3NTcyMjQ0LC0x
+NzE4NDk5MDA1LDEzNDU0MTI1MzJdfQ==
 -->
