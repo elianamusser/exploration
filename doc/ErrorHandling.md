@@ -100,24 +100,21 @@ main method {
 ## Barricade:
 
 ```
-method to ensure valid input (String stringInput) {
+method to ensure valid input (String userInput) {
 	1) check for input errors
 	goal: iterate thru every char in userInput, adding the data to an array
 	int[] inputData <- size 3
-	char[] userInput <- stringInput to char array
-	iterator iterator <- userInput iterator
+	iterator iterator <- iterator over userInput as a char array
 	loop 3 times:
 		try {
-			adding next in iterator to inputData array
+			add next in iterator to inputData array
 		} catch (exception thrown if next is not an int) {
 			throw IllegalArgumentException w/ relevant error msg
 		}
-		while loop: until input isn't a space
+		while loop: until input isn't a space, or no more input
 	if iterator has next: 
 		throw IllegalArgumentException
 	
-		
-
 	2) check for logical errors
 	throw error if: 
 		room #s are the same
@@ -134,6 +131,6 @@ method to ensure valid input (String stringInput) {
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NDQ5MDA4MTAsMjA3NzU3MjI0NCwtMT
-cxODQ5OTAwNSwxMzQ1NDEyNTMyXX0=
+eyJoaXN0b3J5IjpbMTc0ODg3NzQzNiwyMDc3NTcyMjQ0LC0xNz
+E4NDk5MDA1LDEzNDU0MTI1MzJdfQ==
 -->
