@@ -89,7 +89,7 @@ main method {
 			exit loop
 		try {
 			int[] data <- Barricade::validInputData
-			
+			Building::addRoom with data
 		} catch IllegalArgumentException {
 			skip to next user input (without modifying building)
 		}
@@ -113,6 +113,7 @@ static void validInputData (String userInput) {
 		distance <= 0: exception
 		room #s the same: exception
 		either room isn't in the building: exception
+		the rooms
 
 	return inputData
 }
@@ -135,10 +136,9 @@ static int[] dataWithoutInputErrors (String userInput) {
 		arrIndex++
 }
 
-static void
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU2MDE4OTAyMiwyMDc3NTcyMjQ0LC0xNz
-E4NDk5MDA1LDEzNDU0MTI1MzJdfQ==
+eyJoaXN0b3J5IjpbLTM0MzMxNTYxLDIwNzc1NzIyNDQsLTE3MT
+g0OTkwMDUsMTM0NTQxMjUzMl19
 -->
