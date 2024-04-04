@@ -17,8 +17,6 @@
 - ending input stream without entering any connections - (should this be an error?)
 - exceeding a max number of rooms & connections (100?)
 
-**TODO: remove error checking from inner classes**
-
 # Requirements
 Robustness will be favored over correctness.
 
@@ -191,9 +189,9 @@ CHECKLIST: Defensive Programming
 - ❑ Are all exceptions caught? 
 - ❑ Do error messages avoid providing information that would help an attacker break into the system?
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDc0NzI2NjQsMTM5NjIyMjk4NywtMzc5MD
-EzODMzLDEzMjc5NjQ2OTEsNjkxNjYxNDYzLC02NTIwOTY1NDks
-LTY1Njc5MjkyNiwtNDMxOTg2NCwtNTE1OTg3MjY1LDE4NDY1ND
-M4NDMsMjA3NzU3MjI0NCwtMTcxODQ5OTAwNSwxMzQ1NDEyNTMy
-XX0=
+eyJoaXN0b3J5IjpbOTQ5MjA3MDcyLDQ3NDcyNjY0LDEzOTYyMj
+I5ODcsLTM3OTAxMzgzMywxMzI3OTY0NjkxLDY5MTY2MTQ2Mywt
+NjUyMDk2NTQ5LC02NTY3OTI5MjYsLTQzMTk4NjQsLTUxNTk4Nz
+I2NSwxODQ2NTQzODQzLDIwNzc1NzIyNDQsLTE3MTg0OTkwMDUs
+MTM0NTQxMjUzMl19
 -->
