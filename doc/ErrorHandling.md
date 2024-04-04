@@ -106,12 +106,13 @@ method to ensure valid input (String userInput) {
 	int[] inputData <- size 3
 	iterator iterator <- iterator over userInput as a char array
 	loop 3 times:
+		char c <- next in iterator
+		if c is a space: continue
 		try {
 			add next in iterator to inputData array
 		} catch (exception thrown if next is not an int) {
 			throw IllegalArgumentException w/ relevant error msg
-		}
-		while loop: until input isn't a space, or no more input
+		} catch (exception thrown if 
 	if iterator has next: 
 		throw IllegalArgumentException
 	
@@ -131,6 +132,6 @@ method to ensure valid input (String userInput) {
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc0ODg3NzQzNiwyMDc3NTcyMjQ0LC0xNz
+eyJoaXN0b3J5IjpbMTQ3NzkzMjA4NywyMDc3NTcyMjQ0LC0xNz
 E4NDk5MDA1LDEzNDU0MTI1MzJdfQ==
 -->
