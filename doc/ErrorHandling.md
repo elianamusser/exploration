@@ -115,6 +115,9 @@ static void validInputData (String userInput) {
 		either room isn't in the building: exception
 		the rooms already have a corridor: exception
 
+	assert postconditions:
+		every index of inputData is initialized with a valid int
+		
 	return inputData
 }
 		
@@ -169,7 +172,7 @@ CHECKLIST: Defensive Programming
 - ❑ Are all exceptions caught? 
 - ❑ Do error messages avoid providing information that would help an attacker break into the system?
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQzNTE1ODMxNiwtNTE1OTg3MjY1LDE4ND
-Y1NDM4NDMsMjA3NzU3MjI0NCwtMTcxODQ5OTAwNSwxMzQ1NDEy
-NTMyXX0=
+eyJoaXN0b3J5IjpbMTI1NjU1NDEyLC01MTU5ODcyNjUsMTg0Nj
+U0Mzg0MywyMDc3NTcyMjQ0LC0xNzE4NDk5MDA1LDEzNDU0MTI1
+MzJdfQ==
 -->
