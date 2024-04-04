@@ -116,7 +116,7 @@ protected static int[] validInputData (String userInput) {
 	int[] inputData <- Barricade::dataWithoutInputErrors(userInput) 
 	
 	2) check for logical errors
-	switch(inputData): 
+	boolean 
 		either room # < 0: exception
 		distance <= 0: exception
 		room #s the same: exception
@@ -180,7 +180,7 @@ CHECKLIST: Defensive Programming
 - ❑ Are all exceptions caught? 
 - ❑ Do error messages avoid providing information that would help an attacker break into the system?
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY1Njc5MjkyNiwtNDMxOTg2NCwtNTE1OT
-g3MjY1LDE4NDY1NDM4NDMsMjA3NzU3MjI0NCwtMTcxODQ5OTAw
-NSwxMzQ1NDEyNTMyXX0=
+eyJoaXN0b3J5IjpbMTc5MzIwOTg2NSwtNjU2NzkyOTI2LC00Mz
+E5ODY0LC01MTU5ODcyNjUsMTg0NjU0Mzg0MywyMDc3NTcyMjQ0
+LC0xNzE4NDk5MDA1LDEzNDU0MTI1MzJdfQ==
 -->
