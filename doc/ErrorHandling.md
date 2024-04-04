@@ -30,7 +30,8 @@ Other Requirements:
 
 # Error Handling Strategy
 
-I will use a barricade, for global error handling.
+I will use a barricade, in between the user input and Building class, for global error handling.
+It will throw `IllegalArgumentExceptions` with relevant messages. The error messages will be displayed to the user. 
 
 APP (untrusted) -> BARRICADE -> BUILDING (partially trusted)
 
@@ -144,14 +145,14 @@ CHECKLIST: Defensive Programming
 - X ❑ Does the architecture or high-level design specify a specific set of error handling techniques? 
 - X ❑ Does the architecture or high-level design specify whether error handling should favor robustness or correctness? 
 - X ❑ Have barricades been created to contain the damaging effect of errors and reduce the amount of code that has to be concerned about error processing? 
-- ❑ Have debugging aids been used in the code? 
-- ❑ Have debugging aids been installed in such a way that they can be activated or deactivated without a great deal of fuss? 
-- ❑ Is the amount of defensive programming code appropriate—neither too much nor too little? 
-- ❑ Have you used offensive-programming techniques to make errors difficult to overlook during development? 
+- X ❑ Have debugging aids been used in the code? 
+- X ❑ Have debugging aids been installed in such a way that they can be activated or deactivated without a great deal of fuss? 
+- X ❑ Is the amount of defensive programming code appropriate—neither too much nor too little? 
+- X ❑ Have you used offensive-programming techniques to make errors difficult to overlook during development? 
 
 ## Exceptions 
-- ❑ Has your project defined a standardized approach to exception handling? 
-- ❑ Have you considered alternatives to using an exception? 
+- X ❑ Has your project defined a standardized approach to exception handling? 
+- X ❑ Have you considered alternatives to using an exception? 
 - ❑ Is the error handled locally rather than throwing a nonlocal exception, if possible? 
 - ❑ Does the code avoid throwing exceptions in constructors and destructors? 
 - ❑ Are all exceptions at the appropriate levels of abstraction for the routines that throw them? 
@@ -164,9 +165,9 @@ CHECKLIST: Defensive Programming
 - ❑ Are all exceptions caught? 
 - ❑ Do error messages avoid providing information that would help an attacker break into the system?
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjQzNzAzOTE3LDk0OTIwNzA3Miw0NzQ3Mj
-Y2NCwxMzk2MjIyOTg3LC0zNzkwMTM4MzMsMTMyNzk2NDY5MSw2
-OTE2NjE0NjMsLTY1MjA5NjU0OSwtNjU2NzkyOTI2LC00MzE5OD
-Y0LC01MTU5ODcyNjUsMTg0NjU0Mzg0MywyMDc3NTcyMjQ0LC0x
-NzE4NDk5MDA1LDEzNDU0MTI1MzJdfQ==
+eyJoaXN0b3J5IjpbLTIyMzgyOTcxMCw5NDkyMDcwNzIsNDc0Nz
+I2NjQsMTM5NjIyMjk4NywtMzc5MDEzODMzLDEzMjc5NjQ2OTEs
+NjkxNjYxNDYzLC02NTIwOTY1NDksLTY1Njc5MjkyNiwtNDMxOT
+g2NCwtNTE1OTg3MjY1LDE4NDY1NDM4NDMsMjA3NzU3MjI0NCwt
+MTcxODQ5OTAwNSwxMzQ1NDEyNTMyXX0=
 -->
