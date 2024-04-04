@@ -112,7 +112,7 @@ main method {
 
 ```
 check user input is valid:
-loop thru user input as char array:
+for as many ints as should be in the input:
 	if it's a room #, ensure it's a positive integer or 0
 	if it's a distance, ensure it's a positive integer
 	
@@ -191,9 +191,9 @@ CHECKLIST: Defensive Programming
 - ❑ Are all exceptions caught? 
 - ❑ Do error messages avoid providing information that would help an attacker break into the system?
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0ODEyMTMyNDksMTM5NjIyMjk4NywtMz
-c5MDEzODMzLDEzMjc5NjQ2OTEsNjkxNjYxNDYzLC02NTIwOTY1
-NDksLTY1Njc5MjkyNiwtNDMxOTg2NCwtNTE1OTg3MjY1LDE4ND
-Y1NDM4NDMsMjA3NzU3MjI0NCwtMTcxODQ5OTAwNSwxMzQ1NDEy
-NTMyXX0=
+eyJoaXN0b3J5IjpbNjMyNjgxMzI0LDEzOTYyMjI5ODcsLTM3OT
+AxMzgzMywxMzI3OTY0NjkxLDY5MTY2MTQ2MywtNjUyMDk2NTQ5
+LC02NTY3OTI5MjYsLTQzMTk4NjQsLTUxNTk4NzI2NSwxODQ2NT
+QzODQzLDIwNzc1NzIyNDQsLTE3MTg0OTkwMDUsMTM0NTQxMjUz
+Ml19
 -->
