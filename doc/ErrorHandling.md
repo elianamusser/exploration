@@ -9,6 +9,7 @@
 **Logical Input Errors**
 - the same room number repeated twice in one line
 - at least one of the given rooms must already be in the building, to connect the new room to 
+- building already contains a corridor between the rooms
 - no given starting room
 
 **Other Errors**
@@ -182,8 +183,8 @@ CHECKLIST: Defensive Programming
 - ❑ Are all exceptions caught? 
 - ❑ Do error messages avoid providing information that would help an attacker break into the system?
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM3OTAxMzgzMywxMzI3OTY0NjkxLDY5MT
-Y2MTQ2MywtNjUyMDk2NTQ5LC02NTY3OTI5MjYsLTQzMTk4NjQs
-LTUxNTk4NzI2NSwxODQ2NTQzODQzLDIwNzc1NzIyNDQsLTE3MT
-g0OTkwMDUsMTM0NTQxMjUzMl19
+eyJoaXN0b3J5IjpbMTM5NjIyMjk4NywtMzc5MDEzODMzLDEzMj
+c5NjQ2OTEsNjkxNjYxNDYzLC02NTIwOTY1NDksLTY1Njc5Mjky
+NiwtNDMxOTg2NCwtNTE1OTg3MjY1LDE4NDY1NDM4NDMsMjA3Nz
+U3MjI0NCwtMTcxODQ5OTAwNSwxMzQ1NDEyNTMyXX0=
 -->
