@@ -111,7 +111,7 @@ main method {
 ## Barricade:
 
 ```
-static void validInputData (String userInput) {
+public static int[] validInputData (String userInput) {
 	1) check for input errors
 	int[] inputData <- Barricade::dataWithoutInputErrors(userInput) 
 	
@@ -130,7 +130,7 @@ static void validInputData (String userInput) {
 }
 		
 
-static int[] dataWithoutInputErrors (String userInput) {
+private static int[] dataWithoutInputErrors (String userInput) {
 	int[] inputData <- size 3
 	iterator iterator <- iterator over userInput as a char array
 	int arrIndex <- 0	//the index of inputData to update
@@ -180,7 +180,7 @@ CHECKLIST: Defensive Programming
 - ❑ Are all exceptions caught? 
 - ❑ Do error messages avoid providing information that would help an attacker break into the system?
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQzMTk4NjQsLTUxNTk4NzI2NSwxODQ2NT
-QzODQzLDIwNzc1NzIyNDQsLTE3MTg0OTkwMDUsMTM0NTQxMjUz
-Ml19
+eyJoaXN0b3J5IjpbLTE5ODgzNzMzNTUsLTQzMTk4NjQsLTUxNT
+k4NzI2NSwxODQ2NTQzODQzLDIwNzc1NzIyNDQsLTE3MTg0OTkw
+MDUsMTM0NTQxMjUzMl19
 -->
