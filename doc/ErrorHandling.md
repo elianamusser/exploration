@@ -100,7 +100,7 @@ main method {
 ## Barricade:
 
 ```
-highest level method (String stringInput) {
+method to ensure valid input (String stringInput) {
 	1) check for input errors
 	goal: iterate thru every char in userInput, adding the data to an array
 	int[] inputData <- size 3
@@ -112,7 +112,7 @@ highest level method (String stringInput) {
 		} catch (exception thrown if next is not an int) {
 			throw IllegalArgumentException w/ relevant error msg
 		}
-		while loop: until input isn't a space, or iterator doesn't have next
+		while loop: until input isn't a space
 	if iterator has next: 
 		throw IllegalArgumentException
 	
@@ -134,6 +134,6 @@ highest level method (String stringInput) {
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQ2NjI3MTA1LDIwNzc1NzIyNDQsLTE3MT
-g0OTkwMDUsMTM0NTQxMjUzMl19
+eyJoaXN0b3J5IjpbLTE0NDQ5MDA4MTAsMjA3NzU3MjI0NCwtMT
+cxODQ5OTAwNSwxMzQ1NDEyNTMyXX0=
 -->
