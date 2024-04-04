@@ -132,10 +132,25 @@ static void validInputData (String userInput) {
 }
 		
 
-static int[] 
+static int[] dataWithoutInputErrors (String userInput) {
+	int[] inputData <- size 3
+	iterator iterator <- iterator over userInput as a char array
+	int arrIndex <- 0	//the index of inputData to update
+	while iterator has next AND arrIndex < 3:	//add data from userInput to inputData array
+		char c <- next in iterator
+		if c is a space: continue
+		try {
+			inputData[index] <- parsed int from c
+		} catch (exception thrown if c is not an int) {
+			throw exception: "inputs must be integers"
+		} catch (exception thrown if index out of bounds) {		//checked in while loop, but just in case
+			throw exception: "only 3 integers can be inputted"
+		}
+		arrIndex++
+}
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzUzNzM2ODQ4LDIwNzc1NzIyNDQsLTE3MT
-g0OTkwMDUsMTM0NTQxMjUzMl19
+eyJoaXN0b3J5IjpbMjA2NjM2Mzg0NSwyMDc3NTcyMjQ0LC0xNz
+E4NDk5MDA1LDEzNDU0MTI1MzJdfQ==
 -->
