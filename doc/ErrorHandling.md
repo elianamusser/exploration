@@ -110,11 +110,11 @@ method to ensure valid input (String userInput) {
 		char c <- next in iterator
 		if c is a space: continue
 		try {
-			add next in iterator to inputData array
-		} catch (exception thrown if next is not an int) {
+			inputData[index] <- parsed int from c
+		} catch (exception thrown if c is not an int) {
 			throw IllegalArgumentException: "inputs must be integers"
 		} catch (exception thrown if index out of bounds) {
-			throw IllegalArgumentException: "
+			throw IllegalArgumentException: "only 3 integers can be inputted"
 		}
 	if iterator has next: 
 		throw IllegalArgumentException
@@ -135,6 +135,6 @@ method to ensure valid input (String userInput) {
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNjQ1MDY3MjMsMjA3NzU3MjI0NCwtMT
-cxODQ5OTAwNSwxMzQ1NDEyNTMyXX0=
+eyJoaXN0b3J5IjpbNDk2OTU5MzYwLDIwNzc1NzIyNDQsLTE3MT
+g0OTkwMDUsMTM0NTQxMjUzMl19
 -->
