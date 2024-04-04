@@ -31,17 +31,10 @@ Other Requirements:
 # Error Handling Strategy
 
 ## Barricade 
-- pros
-	- centralized error handling -> consistency
-	- reducing repeated code
-	- methods can return the "sanitized" value
-- cons
-	- tight coupling
-	- since it's in a separate class, the error handling may not be clear from the main method
-	- methods will return the value, not a status variable
 
+APP (untrusted) -> BARRICADE -> BUILDING (partially trusted)
 
-APP -> BARRICADE -> BUILDING (partially)
+The barricade will sanitize data involved in adding rooms and corridors to a building. 
 
 # Pseudocode
 
@@ -171,7 +164,7 @@ CHECKLIST: Defensive Programming
 - ❑ Are all exceptions caught? 
 - ❑ Do error messages avoid providing information that would help an attacker break into the system?
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjM2MDAwMTg1LDk0OTIwNzA3Miw0NzQ3Mj
+eyJoaXN0b3J5IjpbODI4Njk1ODQ0LDk0OTIwNzA3Miw0NzQ3Mj
 Y2NCwxMzk2MjIyOTg3LC0zNzkwMTM4MzMsMTMyNzk2NDY5MSw2
 OTE2NjE0NjMsLTY1MjA5NjU0OSwtNjU2NzkyOTI2LC00MzE5OD
 Y0LC01MTU5ODcyNjUsMTg0NjU0Mzg0MywyMDc3NTcyMjQ0LC0x
