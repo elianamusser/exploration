@@ -86,7 +86,7 @@ main method {
 		if input is exit message: 
 			exit loop
 		try {
-			add user input to building w/ barricade method
+			int[] data <- Barricade::validInputData
 		} catch IllegalArgumentException {
 			skip to next user input (without modifying building)
 		}
@@ -100,7 +100,7 @@ main method {
 ## Barricade:
 
 ```
-method to ensure valid input (String userInput) {
+static void validInputData (String userInput) {
 	1) check for input errors
 		goal: iterate thru every char in userInput, adding the data to an array
 	int[] inputData <- size 3
@@ -121,9 +121,12 @@ method to ensure valid input (String userInput) {
 	2) check for logical errors
 	switch(inputData): 
 		either room # < 0: exception
-		distance <= 0: excei
-		room #s the same: error
-		either room isn't in the building: error
+		distance <= 0: exception
+		room #s the same: exception
+		either room isn't in the building: exception
+
+	return inputData
+}
 		
 
 
@@ -137,6 +140,6 @@ method to ensure valid input (String userInput) {
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk0OTMzNzg5OSwyMDc3NTcyMjQ0LC0xNz
+eyJoaXN0b3J5IjpbLTI4NzcwMjkzOSwyMDc3NTcyMjQ0LC0xNz
 E4NDk5MDA1LDEzNDU0MTI1MzJdfQ==
 -->
