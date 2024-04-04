@@ -100,15 +100,13 @@ main method {
 ## Barricade:
 
 ```
-highest level method (String userInput) {
+highest level method (String stringInput) {
 	1) check for input errors
-	iterator <- iterator over chars in userInput
-	loop until the 3rd int:
-		char c <- next char in userInput
-		if c is a room #, throw error if: c is not an int >= 0
-		if c is a distance, throw error if: c is not an int > 0
-		if c is a separator, throw error if: c is not a space
-	if iterator has next, throw error: input should only be 5 chars
+	int[] data <- size 3
+	char[] userInput <- strin char array
+	loop 3 times:
+		
+		
 
 	2) check for logical errors
 	throw error if: 
@@ -126,6 +124,6 @@ highest level method (String userInput) {
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NTcxMDMzODgsMjA3NzU3MjI0NCwtMT
+eyJoaXN0b3J5IjpbLTEwMjc5ODM5MDQsMjA3NzU3MjI0NCwtMT
 cxODQ5OTAwNSwxMzQ1NDEyNTMyXX0=
 -->
