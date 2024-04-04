@@ -103,9 +103,12 @@ main method {
 highest level method (String stringInput) {
 	1) check for input errors
 	int[] data <- size 3
-	char[] userInput <- strin char array
+	char[] userInput <- stringInput to char array
+	iterator iterator <- userInput iterator
 	loop 3 times:
-		
+		try {
+			adding next in iterator to data array
+		} catch (
 		
 
 	2) check for logical errors
@@ -124,6 +127,6 @@ highest level method (String stringInput) {
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMjc5ODM5MDQsMjA3NzU3MjI0NCwtMT
+eyJoaXN0b3J5IjpbLTEwNDQyMjUxNzcsMjA3NzU3MjI0NCwtMT
 cxODQ5OTAwNSwxMzQ1NDEyNTMyXX0=
 -->
