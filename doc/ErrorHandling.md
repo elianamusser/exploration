@@ -30,11 +30,11 @@ Other Requirements:
 
 # Error Handling Strategy
 
-## Barricade 
+I will use a barricade, for global error handling.
 
 APP (untrusted) -> BARRICADE -> BUILDING (partially trusted)
 
-The barricade will sanitize data involved in adding rooms and corridors to a building. 
+The barricade will sanitize data involved in adding rooms and corridors to a building. It will not sanitize data for other operations, such as sorting. 
 
 # Pseudocode
 
@@ -138,12 +138,12 @@ private static int[] dataWithoutInputErrors (String userInput) {
 
 CHECKLIST: Defensive Programming 
 ## General 
-- ❑ Does the routine protect itself from bad input data? 
-- ❑ Have you used assertions to document assumptions, including preconditions and postconditions? 
-- ❑ Have assertions been used only to document conditions that should never occur? 
-- ❑ Does the architecture or high-level design specify a specific set of error handling techniques? 
-- ❑ Does the architecture or high-level design specify whether error handling should favor robustness or correctness? 
-- ❑ Have barricades been created to contain the damaging effect of errors and reduce the amount of code that has to be concerned about error processing? 
+- X ❑ Does the routine protect itself from bad input data? 
+- X ❑ Have you used assertions to document assumptions, including preconditions and postconditions? 
+- X ❑ Have assertions been used only to document conditions that should never occur? 
+- X ❑ Does the architecture or high-level design specify a specific set of error handling techniques? 
+- X ❑ Does the architecture or high-level design specify whether error handling should favor robustness or correctness? 
+- X ❑ Have barricades been created to contain the damaging effect of errors and reduce the amount of code that has to be concerned about error processing? 
 - ❑ Have debugging aids been used in the code? 
 - ❑ Have debugging aids been installed in such a way that they can be activated or deactivated without a great deal of fuss? 
 - ❑ Is the amount of defensive programming code appropriate—neither too much nor too little? 
@@ -164,7 +164,7 @@ CHECKLIST: Defensive Programming
 - ❑ Are all exceptions caught? 
 - ❑ Do error messages avoid providing information that would help an attacker break into the system?
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODI4Njk1ODQ0LDk0OTIwNzA3Miw0NzQ3Mj
+eyJoaXN0b3J5IjpbNjQzNzAzOTE3LDk0OTIwNzA3Miw0NzQ3Mj
 Y2NCwxMzk2MjIyOTg3LC0zNzkwMTM4MzMsMTMyNzk2NDY5MSw2
 OTE2NjE0NjMsLTY1MjA5NjU0OSwtNjU2NzkyOTI2LC00MzE5OD
 Y0LC01MTU5ODcyNjUsMTg0NjU0Mzg0MywyMDc3NTcyMjQ0LC0x
