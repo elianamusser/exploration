@@ -20,9 +20,10 @@
 **TODO: remove error checking from inner classes**
 
 # Requirements
+Robustness will be favored over correctness.
 
 For robustness:
-- input must be in form: int + space + int + space + int
+- input must be in form: [optional spaces] + int + space + int + space + int + [optional spaces]
 - if an input or logical error is encountered, print a relevant error message to notify the user, and move to next input without modifying the map
 - if an error is not encountered, parse the string to add the data to the building
 - do not close the program until user specifies to
@@ -149,7 +150,7 @@ CHECKLIST: Defensive Programming
 - ❑ Does the routine protect itself from bad input data? 
 - ❑ Have you used assertions to document assumptions, including preconditions and postconditions? 
 - ❑ Have assertions been used only to document conditions that should never occur? 
-- ❑ Does the architecture or high-level design specify a specific set of errorhandling techniques? 
+- ❑ Does the architecture or high-level design specify a specific set of error handling techniques? 
 - ❑ Does the architecture or high-level design specify whether error handling should favor robustness or correctness? 
 - ❑ Have barricades been created to contain the damaging effect of errors and reduce the amount of code that has to be concerned about error processing? 
 - ❑ Have debugging aids been used in the code? 
@@ -172,7 +173,7 @@ CHECKLIST: Defensive Programming
 - ❑ Are all exceptions caught? 
 - ❑ Do error messages avoid providing information that would help an attacker break into the system?
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI1NjU1NDEyLC01MTU5ODcyNjUsMTg0Nj
-U0Mzg0MywyMDc3NTcyMjQ0LC0xNzE4NDk5MDA1LDEzNDU0MTI1
-MzJdfQ==
+eyJoaXN0b3J5IjpbMTU1ODU1MjYyMSwtNTE1OTg3MjY1LDE4ND
+Y1NDM4NDMsMjA3NzU3MjI0NCwtMTcxODQ5OTAwNSwxMzQ1NDEy
+NTMyXX0=
 -->
