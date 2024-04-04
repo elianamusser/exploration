@@ -9,13 +9,15 @@
 **Logical Input Errors**
 - unreachable connections
 - the same room number repeated twice in one line
-- at least one of the given rooms must already be in the building, to connect the new room to **(already covered by Building::addRoom)**
+- at least one of the given rooms must already be in the building, to connect the new room to 
 - no given starting room
 
 **Other Errors**
 - no given starting room
 - ending input stream without entering any connections - (should this be an error?)
 - exceeding a max number of rooms & connections (100?)
+
+**TODO: remove error checking from inner classes**
 
 # Requirements
 
@@ -130,17 +132,10 @@ static void validInputData (String userInput) {
 }
 		
 
-
-	
-	
-
-
-
-	return userInput
-}
+static int[] 
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc4MTE5OTg1NywyMDc3NTcyMjQ0LC0xNz
-E4NDk5MDA1LDEzNDU0MTI1MzJdfQ==
+eyJoaXN0b3J5IjpbNzUzNzM2ODQ4LDIwNzc1NzIyNDQsLTE3MT
+g0OTkwMDUsMTM0NTQxMjUzMl19
 -->
