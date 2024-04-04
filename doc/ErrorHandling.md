@@ -3,10 +3,10 @@
 - non-integer characters
 - improper separator characters which aren't spaces
 - more or less than 3 fields per line
- 
-**Logical Input Errors**
 - any negative numbers
 - for distances, < 0
+ 
+**Logical Input Errors**
 - the same room number repeated twice in one line
 - at least one of the given rooms must already be in the building, to connect the new room to 
 - no given starting room
@@ -182,8 +182,8 @@ CHECKLIST: Defensive Programming
 - ❑ Are all exceptions caught? 
 - ❑ Do error messages avoid providing information that would help an attacker break into the system?
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMyNzk2NDY5MSw2OTE2NjE0NjMsLTY1Mj
-A5NjU0OSwtNjU2NzkyOTI2LC00MzE5ODY0LC01MTU5ODcyNjUs
-MTg0NjU0Mzg0MywyMDc3NTcyMjQ0LC0xNzE4NDk5MDA1LDEzND
-U0MTI1MzJdfQ==
+eyJoaXN0b3J5IjpbLTM3OTAxMzgzMywxMzI3OTY0NjkxLDY5MT
+Y2MTQ2MywtNjUyMDk2NTQ5LC02NTY3OTI5MjYsLTQzMTk4NjQs
+LTUxNTk4NzI2NSwxODQ2NTQzODQzLDIwNzc1NzIyNDQsLTE3MT
+g0OTkwMDUsMTM0NTQxMjUzMl19
 -->
